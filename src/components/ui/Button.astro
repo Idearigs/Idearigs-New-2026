@@ -1,0 +1,56 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'accent' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  fullWidth?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  class: className = ''
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-300 ease-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2';
+
+const variants = {
+  primary: 'bg-primary text-white hover:bg-primary-600 hover:shadow-soft disabled:bg-primary/50',
+  secondary: 'bg-white text-primary border-2 border-primary/10 hover:border-primary hover:shadow-soft disabled:opacity-50',
+  accent: 'bg-accent text-white hover:bg-accent-600 hover:shadow-soft disabled:bg-accent/50',
+  ghost: 'bg-transparent text-primary hover:bg-primary/5 disabled:opacity-50'
+};
+
+const sizes = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg'
+};
+
+const classes = [
+  baseStyles,
+  variants[variant],
+  sizes[size],
+  fullWidth && 'w-full',
+  className
+].filter(Boolean).join(' ');
+
+const Tag = href ? 'a' : 'button';
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} disabled={disabled} class={classes}>
+    <slot />
+  </button>
+)}

@@ -1,0 +1,95 @@
+---
+const testimonials = [
+  {
+    quote: "Idearigs transformed our retail operations completely. Their POS system reduced our checkout time by 40% and gave us insights we never had before.",
+    author: "Sarah Johnson",
+    role: "CEO, RetailPlus",
+    company: "RetailPlus",
+    initials: "SJ"
+  },
+  {
+    quote: "The web development team delivered beyond our expectations. Our new e-commerce platform has increased online sales by 200% in just six months.",
+    author: "Michael Chen",
+    role: "Founder, TechStart",
+    company: "TechStart",
+    initials: "MC"
+  },
+  {
+    quote: "Their digital marketing expertise helped us reach customers we never thought possible. ROI on our campaigns has been exceptional.",
+    author: "Emily Rodriguez",
+    role: "Marketing Director, GrowthCo",
+    company: "GrowthCo",
+    initials: "ER"
+  }
+];
+---
+
+<section class="section-padding bg-primary text-white overflow-hidden">
+  <div class="container-custom">
+    <!-- Section header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <span class="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-white/10 text-white mb-4">
+        Client Success Stories
+      </span>
+      <h2 class="mb-6">
+        What our clients
+        <span class="text-accent-300">say about us</span>
+      </h2>
+      <p class="text-lg text-white/70">
+        Don't just take our word for it. Here's what business leaders say about working with Idearigs.
+      </p>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class={`bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+          <!-- Quote icon -->
+          <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="text-lg text-white/90 mb-8 leading-relaxed">
+            "{testimonial.quote}"
+          </blockquote>
+
+          <!-- Author -->
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
+              <span class="text-sm font-bold text-accent">{testimonial.initials}</span>
+            </div>
+            <div>
+              <p class="font-semibold text-white">{testimonial.author}</p>
+              <p class="text-sm text-white/60">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust indicators -->
+    <div class="mt-16 pt-16 border-t border-white/10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="animate-on-scroll">
+          <p class="text-4xl md:text-5xl font-bold text-white mb-2">500+</p>
+          <p class="text-white/60">Happy Clients</p>
+        </div>
+        <div class="animate-on-scroll animation-delay-100">
+          <p class="text-4xl md:text-5xl font-bold text-white mb-2">1000+</p>
+          <p class="text-white/60">Projects Delivered</p>
+        </div>
+        <div class="animate-on-scroll animation-delay-200">
+          <p class="text-4xl md:text-5xl font-bold text-white mb-2">98%</p>
+          <p class="text-white/60">Client Retention</p>
+        </div>
+        <div class="animate-on-scroll animation-delay-300">
+          <p class="text-4xl md:text-5xl font-bold text-white mb-2">10+</p>
+          <p class="text-white/60">Years Experience</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

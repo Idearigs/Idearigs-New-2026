@@ -1,0 +1,61 @@
+---
+interface Props {
+  title?: string;
+  class?: string;
+}
+
+const { title = 'Trusted by leading companies', class: className = '' } = Astro.props;
+
+// Placeholder company logos (CSS-based)
+const companies = [
+  { name: 'TechCorp', initials: 'TC' },
+  { name: 'Innovate Labs', initials: 'IL' },
+  { name: 'DataFlow', initials: 'DF' },
+  { name: 'CloudSync', initials: 'CS' },
+  { name: 'NextGen', initials: 'NG' },
+  { name: 'Vertex', initials: 'VX' },
+  { name: 'Pulse', initials: 'PL' },
+  { name: 'Apex', initials: 'AX' }
+];
+---
+
+<div class={`py-12 bg-background ${className}`}>
+  <div class="container-custom">
+    {title && (
+      <p class="text-center text-sm text-primary/50 uppercase tracking-wider mb-8">
+        {title}
+      </p>
+    )}
+
+    <div class="relative overflow-hidden">
+      <!-- Gradient masks -->
+      <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
+
+      <!-- Ticker container -->
+      <div class="flex animate-ticker">
+        <!-- First set of logos -->
+        {[...companies, ...companies].map((company) => (
+          <div class="flex-shrink-0 mx-8">
+            <div class="w-32 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center grayscale-hover">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <span class="text-xs font-bold text-primary">{company.initials}</span>
+                </div>
+                <span class="text-sm font-medium text-primary/70">{company.name}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .animate-ticker {
+      animation: none;
+    }
+  }
+</style>

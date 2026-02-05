@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+
+const features = [
+  {
+    title: 'Quick Checkout',
+    description: 'Process transactions in seconds with our intuitive interface designed for speed and accuracy.',
+    icon: 'bolt',
+    color: 'pastel-green'
+  },
+  {
+    title: 'Inventory Management',
+    description: 'Real-time stock tracking, automated reorder alerts, and comprehensive inventory reports.',
+    icon: 'box',
+    color: 'pastel-blue'
+  },
+  {
+    title: 'Multi-Payment Support',
+    description: 'Accept cards, mobile payments, contactless, and cash with secure processing.',
+    icon: 'credit-card',
+    color: 'pastel-purple'
+  },
+  {
+    title: 'Employee Management',
+    description: 'Track shifts, manage permissions, and monitor performance all in one place.',
+    icon: 'users',
+    color: 'pastel-yellow'
+  },
+  {
+    title: 'Sales Analytics',
+    description: 'Deep insights into sales trends, customer behavior, and business performance.',
+    icon: 'chart',
+    color: 'pastel-pink'
+  },
+  {
+    title: 'Cloud Sync',
+    description: 'Access your data anywhere with secure cloud backup and real-time synchronization.',
+    icon: 'cloud',
+    color: 'pastel-orange'
+  }
+];
+
+const industries = [
+  { name: 'Retail Stores', icon: 'store' },
+  { name: 'Restaurants', icon: 'utensils' },
+  { name: 'Cafes & Bars', icon: 'coffee' },
+  { name: 'Salons & Spas', icon: 'scissors' },
+  { name: 'Hotels', icon: 'hotel' },
+  { name: 'Quick Service', icon: 'fast-food' }
+];
+
+const pricing = [
+  {
+    name: 'Starter',
+    price: '49',
+    description: 'Perfect for small businesses just getting started.',
+    features: [
+      '1 Terminal',
+      'Basic Inventory',
+      'Email Support',
+      'Standard Reports',
+      'Card Processing'
+    ],
+    highlighted: false
+  },
+  {
+    name: 'Professional',
+    price: '99',
+    description: 'For growing businesses that need more power.',
+    features: [
+      '3 Terminals',
+      'Advanced Inventory',
+      'Priority Support',
+      'Custom Reports',
+      'Multi-Payment Support',
+      'Employee Management'
+    ],
+    highlighted: true
+  },
+  {
+    name: 'Enterprise',
+    price: '199',
+    description: 'Full-featured solution for large operations.',
+    features: [
+      'Unlimited Terminals',
+      'Full Inventory Suite',
+      '24/7 Phone Support',
+      'Advanced Analytics',
+      'API Access',
+      'Multi-Location',
+      'Custom Integrations'
+    ],
+    highlighted: false
+  }
+];
+---
+
+<BaseLayout
+  title="POS Systems"
+  description="Complete point of sale solutions for retail, restaurants, and hospitality. Streamline transactions and manage inventory with ease."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <span class="badge-accent mb-6">Point of Sale Systems</span>
+          <h1 class="mb-6">
+            Modern POS for
+            <span class="text-accent">modern business</span>
+          </h1>
+          <p class="text-lg text-primary/70 mb-8 max-w-xl">
+            Streamline your operations with our powerful, easy-to-use point of sale system. From quick checkouts to deep analytics, we've got you covered.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href="#pricing" variant="primary" size="lg">
+              View Pricing
+            </Button>
+            <Button href="#contact" variant="secondary" size="lg">
+              Book a Demo
+            </Button>
+          </div>
+        </div>
+
+        <!-- Mockup -->
+        <div class="animate-on-scroll animation-delay-200">
+          <div class="bg-white rounded-2xl shadow-soft-xl p-6 animate-float">
+            <div class="aspect-mockup bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6">
+              <div class="h-full flex flex-col">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-20 h-4 bg-primary/20 rounded"></div>
+                  <div class="flex gap-2">
+                    <div class="w-8 h-8 bg-pastel-green rounded-lg"></div>
+                    <div class="w-8 h-8 bg-accent rounded-lg"></div>
+                  </div>
+                </div>
+
+                <!-- Products grid -->
+                <div class="grid grid-cols-3 gap-3 flex-1">
+                  {[1,2,3,4,5,6].map((i) => (
+                    <div class="bg-white rounded-xl p-3 shadow-sm flex flex-col items-center justify-center">
+                      <div class={`w-10 h-10 bg-pastel-${['green', 'blue', 'purple', 'yellow', 'pink', 'orange'][i-1]} rounded-lg mb-2`}></div>
+                      <div class="w-full h-2 bg-primary/20 rounded"></div>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Total -->
+                <div class="mt-4 bg-white rounded-xl p-4 shadow-sm">
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm font-medium text-primary">Total</span>
+                    <span class="text-xl font-bold text-primary">$124.99</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="badge-accent mb-4">Features</span>
+        <h2 class="mb-6">
+          Everything you need to
+          <span class="text-accent">run your business</span>
+        </h2>
+        <p class="text-lg text-primary/70">
+          Our POS system is packed with features designed to make your operations smoother and more profitable.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <Card variant={feature.color as any} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4">
+              {feature.icon === 'bolt' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+              {feature.icon === 'box' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              )}
+              {feature.icon === 'credit-card' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              )}
+              {feature.icon === 'users' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+              {feature.icon === 'chart' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+              {feature.icon === 'cloud' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-2">{feature.title}</h3>
+            <p class="text-primary/70">{feature.description}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="section-padding bg-background">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="badge-accent mb-4">Industries</span>
+        <h2 class="mb-6">
+          Built for
+          <span class="text-accent">every business</span>
+        </h2>
+        <p class="text-lg text-primary/70">
+          Our POS solutions are tailored to meet the unique needs of various industries.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        {industries.map((industry, index) => (
+          <div class={`bg-white rounded-xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <div class="w-14 h-14 bg-pastel-blue rounded-xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <p class="font-medium text-primary">{industry.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="badge-accent mb-4">Pricing</span>
+        <h2 class="mb-6">
+          Simple, transparent
+          <span class="text-accent">pricing</span>
+        </h2>
+        <p class="text-lg text-primary/70">
+          Choose the plan that fits your business. All plans include free setup and training.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {pricing.map((plan, index) => (
+          <div class={`rounded-2xl p-8 ${plan.highlighted ? 'bg-primary text-white ring-4 ring-accent' : 'bg-background'} animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <h3 class={`text-xl font-semibold mb-2 ${plan.highlighted ? 'text-white' : 'text-primary'}`}>{plan.name}</h3>
+            <p class={`text-sm mb-6 ${plan.highlighted ? 'text-white/70' : 'text-primary/70'}`}>{plan.description}</p>
+
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-primary'}`}>${plan.price}</span>
+              <span class={plan.highlighted ? 'text-white/70' : 'text-primary/70'}>/month</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {plan.features.map((feature) => (
+                <li class="flex items-center gap-2">
+                  <svg class={`w-5 h-5 ${plan.highlighted ? 'text-accent-300' : 'text-accent'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class={plan.highlighted ? 'text-white/90' : 'text-primary/70'}>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Button href="#contact" variant={plan.highlighted ? 'accent' : 'secondary'} fullWidth>
+              Get Started
+            </Button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCTA />
+</BaseLayout>

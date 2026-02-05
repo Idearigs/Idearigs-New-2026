@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import FinalCTA from '../components/sections/FinalCTA.astro';
+
+const services = [
+  {
+    title: 'Search Engine Optimization',
+    description: 'Boost your organic visibility and drive qualified traffic with our data-driven SEO strategies.',
+    icon: 'search',
+    color: 'pastel-green',
+    metrics: ['300% traffic increase', 'Top 3 rankings']
+  },
+  {
+    title: 'Pay-Per-Click Advertising',
+    description: 'Maximize ROI with targeted PPC campaigns across Google, Meta, and other platforms.',
+    icon: 'click',
+    color: 'pastel-blue',
+    metrics: ['4.5x ROAS', '50% lower CPA']
+  },
+  {
+    title: 'Social Media Marketing',
+    description: 'Build your brand presence and engage your audience across all social platforms.',
+    icon: 'social',
+    color: 'pastel-purple',
+    metrics: ['500% engagement', '10x follower growth']
+  },
+  {
+    title: 'Content Marketing',
+    description: 'Create compelling content that attracts, engages, and converts your target audience.',
+    icon: 'content',
+    color: 'pastel-yellow',
+    metrics: ['200+ articles', '1M+ readers']
+  },
+  {
+    title: 'Email Marketing',
+    description: 'Nurture leads and drive conversions with personalized email campaigns.',
+    icon: 'email',
+    color: 'pastel-pink',
+    metrics: ['45% open rate', '12% conversion']
+  },
+  {
+    title: 'Analytics & Reporting',
+    description: 'Make data-driven decisions with comprehensive analytics and actionable insights.',
+    icon: 'analytics',
+    color: 'pastel-orange',
+    metrics: ['Real-time dashboards', 'Custom reports']
+  }
+];
+
+const results = [
+  { metric: '500+', label: 'Campaigns Launched' },
+  { metric: '$50M+', label: 'Ad Spend Managed' },
+  { metric: '250%', label: 'Average ROI' },
+  { metric: '98%', label: 'Client Retention' }
+];
+
+const platforms = [
+  'Google Ads',
+  'Meta Ads',
+  'LinkedIn',
+  'Twitter/X',
+  'TikTok',
+  'YouTube',
+  'SEMrush',
+  'HubSpot'
+];
+---
+
+<BaseLayout
+  title="Digital Marketing"
+  description="Data-driven marketing strategies that deliver results. SEO, social media, PPC, and content marketing to grow your brand."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-on-scroll">
+          <span class="badge-accent mb-6">Digital Marketing</span>
+          <h1 class="mb-6">
+            Marketing that
+            <span class="text-accent">delivers growth</span>
+          </h1>
+          <p class="text-lg text-primary/70 mb-8 max-w-xl">
+            From SEO to social media, we create data-driven marketing strategies that attract, engage, and convert your ideal customers.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href="#contact" variant="primary" size="lg">
+              Get a Free Audit
+            </Button>
+            <Button href="#services" variant="secondary" size="lg">
+              Our Services
+            </Button>
+          </div>
+        </div>
+
+        <!-- Analytics mockup -->
+        <div class="animate-on-scroll animation-delay-200">
+          <div class="bg-white rounded-2xl shadow-soft-xl p-6 animate-float">
+            <div class="aspect-mockup bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6">
+              <div class="h-full flex flex-col">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <div class="w-24 h-3 bg-primary/20 rounded mb-1"></div>
+                    <div class="w-16 h-2 bg-primary/10 rounded"></div>
+                  </div>
+                  <div class="flex gap-2">
+                    <div class="px-3 py-1 bg-pastel-green rounded-full text-xs font-medium text-green-700">+24%</div>
+                  </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="flex-1 bg-white rounded-xl p-4 shadow-sm mb-4">
+                  <div class="h-full flex items-end gap-2">
+                    {[30, 45, 35, 60, 50, 75, 65, 90, 80, 95, 85, 100].map((height, i) => (
+                      <div class="flex-1 bg-gradient-to-t from-accent to-accent/50 rounded-t transition-all duration-300 hover:from-accent-600" style={`height: ${height}%`}></div>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="bg-white rounded-xl p-3 shadow-sm">
+                    <div class="text-xs text-primary/60 mb-1">Visitors</div>
+                    <div class="text-lg font-bold text-primary">24.5K</div>
+                  </div>
+                  <div class="bg-white rounded-xl p-3 shadow-sm">
+                    <div class="text-xs text-primary/60 mb-1">Conversions</div>
+                    <div class="text-lg font-bold text-accent">1,234</div>
+                  </div>
+                  <div class="bg-white rounded-xl p-3 shadow-sm">
+                    <div class="text-xs text-primary/60 mb-1">Revenue</div>
+                    <div class="text-lg font-bold text-primary">$48K</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="py-12 bg-primary">
+    <div class="container-custom">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {results.map((item, index) => (
+          <div class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <p class="text-3xl md:text-4xl font-bold text-white mb-1">{item.metric}</p>
+            <p class="text-white/60">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="badge-accent mb-4">Services</span>
+        <h2 class="mb-6">
+          Full-funnel marketing
+          <span class="text-accent">solutions</span>
+        </h2>
+        <p class="text-lg text-primary/70">
+          Comprehensive digital marketing services to grow your business at every stage of the customer journey.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <Card variant={service.color as any} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4">
+              {service.icon === 'search' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              )}
+              {service.icon === 'click' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+              )}
+              {service.icon === 'social' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              )}
+              {service.icon === 'content' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              )}
+              {service.icon === 'email' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              {service.icon === 'analytics' && (
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-2">{service.title}</h3>
+            <p class="text-primary/70 mb-4">{service.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {service.metrics.map((metric) => (
+                <span class="text-xs font-medium px-2 py-1 bg-white/50 rounded-full text-primary/70">{metric}</span>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="section-padding bg-background">
+    <div class="container-custom">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <span class="badge-accent mb-4">Platforms</span>
+        <h2 class="mb-6">
+          Expert across all
+          <span class="text-accent">major platforms</span>
+        </h2>
+        <p class="text-lg text-primary/70">
+          We're certified partners with the world's leading advertising and marketing platforms.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {platforms.map((platform, index) => (
+          <div class={`bg-white rounded-xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+            <div class="w-12 h-12 bg-pastel-blue rounded-xl flex items-center justify-center mx-auto mb-3">
+              <span class="text-lg font-bold text-primary">{platform.charAt(0)}</span>
+            </div>
+            <p class="font-medium text-primary">{platform}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-16 bg-accent">
+    <div class="container-custom text-center">
+      <h2 class="text-white mb-4">Ready to grow your business?</h2>
+      <p class="text-white/80 mb-8 max-w-2xl mx-auto">
+        Get a free marketing audit and discover untapped opportunities for your business.
+      </p>
+      <Button href="#contact" variant="secondary" size="lg">
+        Get Your Free Audit
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </Button>
+    </div>
+  </section>
+
+  <FinalCTA />
+</BaseLayout>

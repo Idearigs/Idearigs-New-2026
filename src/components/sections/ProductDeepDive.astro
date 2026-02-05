@@ -1,0 +1,181 @@
+---
+import DeviceToggle from '../ui/DeviceToggle.astro';
+import Button from '../ui/Button.astro';
+
+const features = [
+  {
+    title: 'Smart Inventory Management',
+    description: 'Real-time stock tracking, automated reorder points, and comprehensive reporting to keep your inventory optimized.',
+    icon: 'inventory'
+  },
+  {
+    title: 'Seamless Payment Processing',
+    description: 'Accept all payment methods including cards, mobile payments, and contactless transactions with secure processing.',
+    icon: 'payment'
+  },
+  {
+    title: 'Advanced Analytics Dashboard',
+    description: 'Gain insights with detailed sales reports, customer behavior analysis, and performance metrics at your fingertips.',
+    icon: 'analytics'
+  },
+  {
+    title: 'Multi-Location Support',
+    description: 'Manage multiple stores from a single dashboard with centralized inventory, pricing, and reporting.',
+    icon: 'locations'
+  }
+];
+---
+
+<section class="section-padding bg-background">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Content -->
+      <div class="lg:sticky lg:top-32 animate-on-scroll">
+        <span class="badge-accent mb-4">Product Deep Dive</span>
+        <h2 class="mb-6">
+          Powerful features for
+          <span class="text-accent">modern retail</span>
+        </h2>
+        <p class="text-lg text-primary/70 mb-8">
+          Our POS system is designed to handle everything from quick sales to complex inventory management, giving you the tools to run your business efficiently.
+        </p>
+
+        <!-- Feature list -->
+        <div class="space-y-6 mb-8">
+          {features.map((feature, index) => (
+            <div class={`flex gap-4 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+              <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-card flex items-center justify-center">
+                {feature.icon === 'inventory' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                )}
+                {feature.icon === 'payment' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                )}
+                {feature.icon === 'analytics' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                )}
+                {feature.icon === 'locations' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )}
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary mb-1">{feature.title}</h4>
+                <p class="text-primary/70 text-sm">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <Button href="/pos-systems" variant="primary">
+          Explore POS Features
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Button>
+      </div>
+
+      <!-- Interactive mockup -->
+      <div class="animate-on-scroll animation-delay-200">
+        <div class="mb-6 flex justify-center lg:justify-end">
+          <DeviceToggle />
+        </div>
+
+        <div data-mockup data-active-device="desktop" class="relative">
+          <!-- Desktop mockup -->
+          <div class="device-desktop bg-white rounded-2xl shadow-soft-xl overflow-hidden transition-all duration-500">
+            <div class="bg-primary/5 p-2 flex items-center gap-2 border-b border-primary/10">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+              </div>
+              <div class="flex-1 bg-white/50 rounded-lg h-6 mx-8"></div>
+            </div>
+            <div class="aspect-[16/10] p-6">
+              <!-- POS Interface mockup -->
+              <div class="h-full grid grid-cols-3 gap-4">
+                <!-- Left sidebar -->
+                <div class="bg-background rounded-xl p-4">
+                  <div class="w-full h-4 bg-primary/20 rounded mb-4"></div>
+                  <div class="space-y-2">
+                    {[1,2,3,4,5].map(() => (
+                      <div class="flex items-center gap-2 p-2 bg-white rounded-lg">
+                        <div class="w-8 h-8 bg-pastel-green rounded-lg"></div>
+                        <div class="flex-1">
+                          <div class="w-full h-2 bg-primary/20 rounded mb-1"></div>
+                          <div class="w-12 h-2 bg-primary/10 rounded"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Main area -->
+                <div class="col-span-2 bg-background rounded-xl p-4 flex flex-col">
+                  <div class="grid grid-cols-4 gap-2 mb-4">
+                    {[1,2,3,4,5,6,7,8].map(() => (
+                      <div class="aspect-square bg-white rounded-xl flex flex-col items-center justify-center p-2 shadow-sm">
+                        <div class="w-8 h-8 bg-pastel-blue rounded-lg mb-1"></div>
+                        <div class="w-full h-2 bg-primary/20 rounded"></div>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="flex-1 bg-white rounded-xl p-3">
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="w-20 h-3 bg-primary/30 rounded"></div>
+                      <div class="w-16 h-5 bg-accent rounded"></div>
+                    </div>
+                    <div class="space-y-2">
+                      {[1,2,3].map(() => (
+                        <div class="flex items-center justify-between py-2 border-b border-primary/5">
+                          <div class="w-24 h-2 bg-primary/20 rounded"></div>
+                          <div class="w-12 h-2 bg-primary/30 rounded"></div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating notification -->
+          <div class="absolute -right-4 top-1/4 bg-white rounded-xl shadow-soft p-3 animate-float">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 bg-pastel-green rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-medium text-primary">Payment Received</p>
+                <p class="text-xs text-primary/60">$45.99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-mockup][data-active-device="tablet"] .device-desktop {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  [data-mockup][data-active-device="mobile"] .device-desktop {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+</style>
