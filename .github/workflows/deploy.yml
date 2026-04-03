@@ -18,7 +18,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Set up Docker Buildx (enables caching + multi-platform)
+      # 2. Lowercase image name (Docker registry requires lowercase)
+      - name: Set lowercase image name
+        run: echo "IMAGE=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      # 3. Set up Docker Buildx (enables caching + multi-platform)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -30,15 +34,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # 4. Build and push the Docker image
+      # 5. Build and push the Docker image
       - name: Build & push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -51,8 +55,8 @@ jobs:
             -X GET "${{ secrets.COOLIFY_WEBHOOK_URL }}" \
             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
 
-      # 6. Summary
+      # 7. Summary
       - name: Deployment summary
         run: |
-          echo "✅ Image pushed: ghcr.io/${{ github.repository }}:${{ github.sha }}"
+          echo "✅ Image pushed: ${{ env.IMAGE }}:${{ github.sha }}"
           echo "🚀 Coolify deployment triggered"
