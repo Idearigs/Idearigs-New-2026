@@ -1,5 +1,4 @@
 ---
-import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
 
 const solutions = [
@@ -7,7 +6,10 @@ const solutions = [
     title: 'POS Systems',
     description: 'Complete point of sale solutions for retail, restaurants, and hospitality. Streamline transactions and manage inventory with ease.',
     icon: 'pos',
-    variant: 'pastel-green' as const,
+    bg: '#E8F5E9',
+    glow: 'rgba(34,197,94,0.25)',
+    iconBg: 'bg-green-100',
+    iconColor: 'text-green-700',
     href: '/pos-systems',
     features: ['Inventory Management', 'Multi-location Support', 'Real-time Analytics']
   },
@@ -15,7 +17,10 @@ const solutions = [
     title: 'Web Development',
     description: 'Modern, responsive websites and web applications built with cutting-edge technologies. From landing pages to complex platforms.',
     icon: 'web',
-    variant: 'pastel-blue' as const,
+    bg: '#E3F2FD',
+    glow: 'rgba(59,130,246,0.25)',
+    iconBg: 'bg-blue-100',
+    iconColor: 'text-blue-700',
     href: '/web-development',
     features: ['Custom Development', 'E-commerce Solutions', 'Progressive Web Apps']
   },
@@ -23,9 +28,24 @@ const solutions = [
     title: 'Digital Marketing',
     description: 'Data-driven marketing strategies that deliver results. SEO, social media, PPC, and content marketing to grow your brand.',
     icon: 'marketing',
-    variant: 'pastel-purple' as const,
+    bg: '#EDE7F6',
+    glow: 'rgba(139,92,246,0.25)',
+    iconBg: 'bg-violet-100',
+    iconColor: 'text-violet-700',
     href: '/digital-marketing',
     features: ['SEO Optimization', 'Social Media Marketing', 'Performance Analytics']
+  },
+  {
+    title: 'HR / Payroll System',
+    description: 'Streamline your workforce management with automated payroll, leave tracking, and employee records — all in one place.',
+    icon: 'hr',
+    bg: '#FFF8E1',
+    glow: 'rgba(234,179,8,0.25)',
+    iconBg: 'bg-amber-100',
+    iconColor: 'text-amber-700',
+    href: null,
+    features: ['Automated Payroll', 'Leave & Attendance', 'Employee Records'],
+    comingSoon: true
   }
 ];
 ---
@@ -36,47 +56,66 @@ const solutions = [
     <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
       <span class="badge-accent mb-4">Our Solutions</span>
       <h2 class="mb-6">
-        Everything you need to
+        <span class="text-gray-900">Everything you need to</span>
         <span class="text-accent">grow your business</span>
       </h2>
-      <p class="text-lg text-primary/70">
+      <p class="text-lg text-gray-600">
         Comprehensive technology solutions designed to streamline operations, enhance customer experiences, and drive sustainable growth.
       </p>
     </div>
 
     <!-- Solutions grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 gap-8">
       {solutions.map((solution, index) => (
-        <Card variant={solution.variant} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
+        <div
+          class={`solution-card relative rounded-2xl p-8 border border-black/5 transition-all duration-300 hover:-translate-y-1 animate-on-scroll animation-delay-${(index + 1) * 100}`}
+          style={`background:${solution.bg};`}
+          data-glow={solution.glow}
+        >
+          <!-- Glow layer (shown on hover via JS) -->
+          <div class="glow-layer absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 pointer-events-none" style={`box-shadow: 0 0 40px 8px ${solution.glow}, 0 8px 32px 0 ${solution.glow};`}></div>
+
+          <!-- Coming Soon badge -->
+          {solution.comingSoon && (
+            <div class="absolute top-4 right-4 z-10">
+              <span class="bg-gray-900 text-white text-xs font-semibold px-3 py-1 rounded-full">Coming Soon</span>
+            </div>
+          )}
+
           <!-- Icon -->
-          <div class="w-14 h-14 bg-white rounded-xl shadow-soft flex items-center justify-center mb-6">
+          <div class={`w-14 h-14 ${solution.iconBg} rounded-xl flex items-center justify-center mb-6 shadow-sm`}>
             {solution.icon === 'pos' && (
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class={`w-7 h-7 ${solution.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
             )}
             {solution.icon === 'web' && (
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class={`w-7 h-7 ${solution.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             )}
             {solution.icon === 'marketing' && (
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class={`w-7 h-7 ${solution.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+              </svg>
+            )}
+            {solution.icon === 'hr' && (
+              <svg class={`w-7 h-7 ${solution.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             )}
           </div>
 
           <!-- Content -->
-          <h3 class="text-xl font-semibold text-primary mb-3">{solution.title}</h3>
-          <p class="text-primary/70 mb-6">{solution.description}</p>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">{solution.title}</h3>
+          <p class="text-gray-600 mb-6">{solution.description}</p>
 
           <!-- Features -->
           <ul class="space-y-2 mb-6">
             {solution.features.map((feature) => (
-              <li class="flex items-center gap-2 text-sm text-primary/70">
-                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <svg class={`w-4 h-4 ${solution.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
                 {feature}
@@ -85,18 +124,28 @@ const solutions = [
           </ul>
 
           <!-- Link -->
-          <a href={solution.href} class="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all duration-200">
-            Learn more
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </Card>
+          {solution.href ? (
+            <a href={solution.href} class={`inline-flex items-center gap-2 font-medium hover:gap-3 transition-all duration-200 ${solution.iconColor}`}>
+              Learn more
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          ) : (
+            <span class="inline-flex items-center gap-2 text-gray-400 text-sm font-medium">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Launching soon
+            </span>
+          )}
+        </div>
       ))}
     </div>
 
     <!-- CTA -->
     <div class="text-center mt-12 animate-on-scroll">
+
       <Button href="#contact" variant="primary">
         Discuss Your Project
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,3 +155,11 @@ const solutions = [
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.solution-card').forEach(card => {
+    const glow = card.querySelector<HTMLElement>('.glow-layer');
+    card.addEventListener('mouseenter', () => { if (glow) glow.style.opacity = '1'; });
+    card.addEventListener('mouseleave', () => { if (glow) glow.style.opacity = '0'; });
+  });
+</script>

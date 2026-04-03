@@ -10,7 +10,7 @@ const { defaultDevice = 'desktop', class: className = '' } = Astro.props;
 <div class={`inline-flex items-center bg-white rounded-xl p-1 shadow-card ${className}`}>
   <button
     data-device="desktop"
-    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'desktop' ? 'bg-primary text-white' : 'text-primary/60 hover:text-primary'}`}
+    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'desktop' ? 'bg-primary text-white' : 'text-gray-600 hover:text-gray-900'}`}
     aria-label="Desktop view"
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +21,7 @@ const { defaultDevice = 'desktop', class: className = '' } = Astro.props;
 
   <button
     data-device="tablet"
-    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'tablet' ? 'bg-primary text-white' : 'text-primary/60 hover:text-primary'}`}
+    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'tablet' ? 'bg-primary text-white' : 'text-gray-600 hover:text-gray-900'}`}
     aria-label="Tablet view"
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ const { defaultDevice = 'desktop', class: className = '' } = Astro.props;
 
   <button
     data-device="mobile"
-    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'mobile' ? 'bg-primary text-white' : 'text-primary/60 hover:text-primary'}`}
+    class={`device-btn flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${defaultDevice === 'mobile' ? 'bg-primary text-white' : 'text-gray-600 hover:text-gray-900'}`}
     aria-label="Mobile view"
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,9 +53,9 @@ const { defaultDevice = 'desktop', class: className = '' } = Astro.props;
       // Update button styles
       deviceButtons.forEach(b => {
         b.classList.remove('bg-primary', 'text-white');
-        b.classList.add('text-primary/60', 'hover:text-primary');
+        b.classList.add('text-gray-600', 'hover:text-gray-900');
       });
-      btn.classList.remove('text-primary/60', 'hover:text-primary');
+      btn.classList.remove('text-gray-600', 'hover:text-gray-900');
       btn.classList.add('bg-primary', 'text-white');
 
       // Update mockup display

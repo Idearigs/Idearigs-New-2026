@@ -1,165 +1,415 @@
 ---
-import DeviceToggle from '../ui/DeviceToggle.astro';
 import Button from '../ui/Button.astro';
 
-const features = [
-  {
-    title: 'Smart Inventory Management',
-    description: 'Real-time stock tracking, automated reorder points, and comprehensive reporting to keep your inventory optimized.',
-    icon: 'inventory'
-  },
-  {
-    title: 'Seamless Payment Processing',
-    description: 'Accept all payment methods including cards, mobile payments, and contactless transactions with secure processing.',
-    icon: 'payment'
-  },
-  {
-    title: 'Advanced Analytics Dashboard',
-    description: 'Gain insights with detailed sales reports, customer behavior analysis, and performance metrics at your fingertips.',
-    icon: 'analytics'
-  },
-  {
-    title: 'Multi-Location Support',
-    description: 'Manage multiple stores from a single dashboard with centralized inventory, pricing, and reporting.',
-    icon: 'locations'
-  }
+const tabs = [
+  { id: 'pos',     label: 'POS System' },
+  { id: 'website', label: 'Website' },
+  { id: 'hr',      label: 'HR System' },
 ];
+
+const features = {
+  pos: [
+    { title: 'Smart Inventory Management', description: 'Real-time stock tracking, automated reorder points, and comprehensive reporting.', icon: 'inventory' },
+    { title: 'Seamless Payment Processing', description: 'Accept cards, mobile payments, and contactless transactions securely.', icon: 'payment' },
+    { title: 'Advanced Analytics Dashboard', description: 'Detailed sales reports, customer behaviour analysis, and performance metrics.', icon: 'analytics' },
+    { title: 'Multi-Location Support', description: 'Manage multiple stores from a single centralised dashboard.', icon: 'locations' },
+  ],
+  website: [
+    { title: 'Custom Web Development', description: 'Bespoke websites built for speed, SEO, and conversion from day one.', icon: 'code' },
+    { title: 'E-Commerce Ready', description: 'Full online store setup with payments, inventory, and order management.', icon: 'cart' },
+    { title: 'Performance Optimised', description: 'Lightning-fast load times with 95+ Lighthouse scores as standard.', icon: 'speed' },
+    { title: 'Ongoing Support', description: 'Dedicated maintenance, updates, and technical support after launch.', icon: 'support' },
+  ],
+  hr: [
+    { title: 'Automated Payroll', description: 'Run accurate payroll in minutes with tax calculations and payslip generation.', icon: 'payroll' },
+    { title: 'Leave & Attendance', description: 'Track holidays, sick days, and shift patterns from one central place.', icon: 'leave' },
+    { title: 'Employee Records', description: 'Secure digital HR files, contracts, and performance reviews.', icon: 'records' },
+    { title: 'Compliance Ready', description: 'Built-in UK payroll compliance with HMRC RTI submissions.', icon: 'compliance' },
+  ],
+};
+
+const ctaLinks = {
+  pos:     { href: '/pos-systems',      label: 'Explore POS Features' },
+  website: { href: '/web-development',  label: 'Explore Web Services' },
+  hr:      { href: '#contact',          label: 'Join the Waitlist' },
+};
 ---
 
-<section class="section-padding bg-background">
+<section class="section-padding bg-background overflow-hidden">
   <div class="container-custom">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <!-- Content -->
+    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+
+      <!-- Left: content (switches per tab) -->
       <div class="lg:sticky lg:top-32 animate-on-scroll">
         <span class="badge-accent mb-4">Product Deep Dive</span>
-        <h2 class="mb-6">
-          Powerful features for
-          <span class="text-accent">modern retail</span>
-        </h2>
-        <p class="text-lg text-primary/70 mb-8">
-          Our POS system is designed to handle everything from quick sales to complex inventory management, giving you the tools to run your business efficiently.
-        </p>
 
-        <!-- Feature list -->
-        <div class="space-y-6 mb-8">
-          {features.map((feature, index) => (
-            <div class={`flex gap-4 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
-              <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-card flex items-center justify-center">
-                {feature.icon === 'inventory' && (
-                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                  </svg>
-                )}
-                {feature.icon === 'payment' && (
-                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                )}
-                {feature.icon === 'analytics' && (
-                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                )}
-                {feature.icon === 'locations' && (
-                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                )}
+        <!-- Headings per tab -->
+        <div id="pd-heading-pos" class="pd-heading">
+          <h2 class="mb-4 text-gray-900">Powerful features for <span class="text-accent">modern retail</span></h2>
+          <p class="text-gray-600 text-lg mb-8">Our POS system handles everything from quick sales to complex inventory management — built for retail, restaurants, and hospitality.</p>
+        </div>
+        <div id="pd-heading-website" class="pd-heading hidden">
+          <h2 class="mb-4 text-gray-900">Websites that <span class="text-accent">drive results</span></h2>
+          <p class="text-gray-600 text-lg mb-8">From landing pages to full e-commerce platforms, we build fast, beautiful websites that convert visitors into customers.</p>
+        </div>
+        <div id="pd-heading-hr" class="pd-heading hidden">
+          <h2 class="mb-4 text-gray-900">HR & Payroll <span class="text-accent">made simple</span></h2>
+          <p class="text-gray-600 text-lg mb-8">Automate payroll, manage leave, and keep employee records organised — all in one compliant platform built for UK businesses.</p>
+        </div>
+
+        <!-- Feature lists per tab -->
+        {Object.entries(features).map(([tabId, featureList]) => (
+          <div id={`pd-features-${tabId}`} class={`pd-features space-y-5 mb-8 ${tabId !== 'pos' ? 'hidden' : ''}`}>
+            {featureList.map((f, i) => (
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-11 h-11 bg-white rounded-xl shadow-card flex items-center justify-center">
+                  {(f.icon === 'inventory' || f.icon === 'records') && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                  )}
+                  {f.icon === 'payment' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                  )}
+                  {f.icon === 'analytics' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  )}
+                  {f.icon === 'locations' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  )}
+                  {f.icon === 'code' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                  )}
+                  {f.icon === 'cart' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                  )}
+                  {f.icon === 'speed' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  )}
+                  {f.icon === 'support' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                  )}
+                  {f.icon === 'payroll' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  )}
+                  {f.icon === 'leave' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  )}
+                  {f.icon === 'compliance' && (
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  )}
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-0.5">{f.title}</h4>
+                  <p class="text-gray-600 text-sm">{f.description}</p>
+                </div>
               </div>
-              <div>
-                <h4 class="font-semibold text-primary mb-1">{feature.title}</h4>
-                <p class="text-primary/70 text-sm">{feature.description}</p>
-              </div>
-            </div>
+            ))}
+          </div>
+        ))}
+
+        <!-- CTA buttons per tab -->
+        {Object.entries(ctaLinks).map(([tabId, cta]) => (
+          <div id={`pd-cta-${tabId}`} class={`pd-cta ${tabId !== 'pos' ? 'hidden' : ''}`}>
+            <Button href={cta.href} variant="primary">
+              {cta.label}
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </Button>
+          </div>
+        ))}
+      </div>
+
+      <!-- Right: tabs + mockup -->
+      <div class="animate-on-scroll animation-delay-200">
+
+        <!-- Tab switcher -->
+        <div class="flex gap-2 mb-5 bg-white rounded-xl p-1.5 shadow-sm border border-gray-100 w-fit">
+          {tabs.map((tab) => (
+            <button
+              data-tab={tab.id}
+              class={`pd-tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${tab.id === 'pos' ? 'bg-gray-900 text-white shadow' : 'text-gray-500 hover:text-gray-800'}`}
+            >
+              {tab.label}
+            </button>
           ))}
         </div>
 
-        <Button href="/pos-systems" variant="primary">
-          Explore POS Features
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </Button>
-      </div>
-
-      <!-- Interactive mockup -->
-      <div class="animate-on-scroll animation-delay-200">
-        <div class="mb-6 flex justify-center lg:justify-end">
-          <DeviceToggle />
-        </div>
-
-        <div data-mockup data-active-device="desktop" class="relative">
-          <!-- Desktop mockup -->
-          <div class="device-desktop bg-white rounded-2xl shadow-soft-xl overflow-hidden transition-all duration-500">
-            <div class="bg-primary/5 p-2 flex items-center gap-2 border-b border-primary/10">
-              <div class="flex gap-1.5">
-                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-              </div>
-              <div class="flex-1 bg-white/50 rounded-lg h-6 mx-8"></div>
+        <!-- Browser chrome wrapper -->
+        <div class="bg-white rounded-2xl shadow-soft-xl overflow-hidden border border-gray-100">
+          <!-- New tag banner -->
+          <div class="bg-gradient-to-r from-accent to-indigo-500 px-4 py-1.5 flex items-center justify-center gap-2">
+            <span class="bg-white text-accent text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">New</span>
+            <span class="text-white text-xs font-medium">Introducing TrueDesk — Our all-in-one business management platform</span>
+            <span class="text-white/70 text-xs">✦</span>
+          </div>
+          <!-- Browser bar -->
+          <div class="bg-gray-50 px-4 py-3 flex items-center gap-3 border-b border-gray-100">
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+              <div class="w-3 h-3 bg-green-400 rounded-full"></div>
             </div>
-            <div class="aspect-[16/10] p-6">
-              <!-- POS Interface mockup -->
-              <div class="h-full grid grid-cols-3 gap-4">
-                <!-- Left sidebar -->
-                <div class="bg-background rounded-xl p-4">
-                  <div class="w-full h-4 bg-primary/20 rounded mb-4"></div>
-                  <div class="space-y-2">
-                    {[1,2,3,4,5].map(() => (
-                      <div class="flex items-center gap-2 p-2 bg-white rounded-lg">
-                        <div class="w-8 h-8 bg-pastel-green rounded-lg"></div>
-                        <div class="flex-1">
-                          <div class="w-full h-2 bg-primary/20 rounded mb-1"></div>
-                          <div class="w-12 h-2 bg-primary/10 rounded"></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            <div id="pd-url-bar" class="flex-1 bg-white rounded-md h-6 flex items-center px-3 border border-gray-100">
+              <span id="pd-url-text" class="text-xs text-gray-400 font-mono">app.truedesk.co.uk/pos/dashboard</span>
+            </div>
+          </div>
 
-                <!-- Main area -->
-                <div class="col-span-2 bg-background rounded-xl p-4 flex flex-col">
-                  <div class="grid grid-cols-4 gap-2 mb-4">
-                    {[1,2,3,4,5,6,7,8].map(() => (
-                      <div class="aspect-square bg-white rounded-xl flex flex-col items-center justify-center p-2 shadow-sm">
-                        <div class="w-8 h-8 bg-pastel-blue rounded-lg mb-1"></div>
-                        <div class="w-full h-2 bg-primary/20 rounded"></div>
-                      </div>
-                    ))}
-                  </div>
-                  <div class="flex-1 bg-white rounded-xl p-3">
-                    <div class="flex items-center justify-between mb-3">
-                      <div class="w-20 h-3 bg-primary/30 rounded"></div>
-                      <div class="w-16 h-5 bg-accent rounded"></div>
-                    </div>
-                    <div class="space-y-2">
-                      {[1,2,3].map(() => (
-                        <div class="flex items-center justify-between py-2 border-b border-primary/5">
-                          <div class="w-24 h-2 bg-primary/20 rounded"></div>
-                          <div class="w-12 h-2 bg-primary/30 rounded"></div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+          <!-- ─── POS MOCKUP ─── -->
+          <div id="pd-screen-pos" class="pd-screen relative overflow-hidden" style="height:420px;">
+            <!-- Sidebar -->
+            <div class="absolute left-0 top-0 bottom-0 w-40 bg-white border-r border-gray-100 flex flex-col p-3 gap-1 shadow-sm">
+              <div class="flex items-center gap-2 mb-4 px-1">
+                <div class="w-7 h-7 bg-accent rounded-lg flex items-center justify-center">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                 </div>
+                <span class="text-gray-900 text-xs font-bold">Idearigs POS</span>
+              </div>
+              {['Dashboard','Point of Sale','Sales','Inventory','Customers','Reports'].map((item, i) => (
+                <div class={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer pos-nav-item text-xs font-medium ${i === 0 ? 'bg-accent/10 text-accent font-semibold' : 'text-gray-500 hover:bg-gray-50'}`} data-nav-index={i}>
+                  <div class={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-accent' : 'bg-gray-300'}`}></div>
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <!-- Main content -->
+            <div class="absolute left-40 right-0 top-0 bottom-0 bg-gray-50 p-4 overflow-hidden">
+              <!-- Top row stats -->
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                {[
+                  { label: "Today's Sales", value: '£1,284', change: '+12%', color: 'text-green-600' },
+                  { label: 'Transactions', value: '47', change: '+5%', color: 'text-green-600' },
+                  { label: 'Avg. Order', value: '£27.32', change: '-2%', color: 'text-red-500' },
+                ].map((stat) => (
+                  <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100 pos-stat-card">
+                    <p class="text-gray-500 text-xs mb-1">{stat.label}</p>
+                    <p class="text-gray-900 font-bold text-lg leading-none">{stat.value}</p>
+                    <p class={`text-xs mt-1 font-medium ${stat.color}`}>{stat.change} today</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Recent sales table -->
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b border-gray-50">
+                  <span class="text-xs font-semibold text-gray-700">Recent Sales</span>
+                  <span class="text-xs text-accent font-medium cursor-pointer">View all</span>
+                </div>
+                {[
+                  { name: 'Hasitha De Silva', item: 'Gold Ring 9ct', amount: '£450.00', time: '2 min ago', avatar: 'HS' },
+                  { name: 'Walk-in Customer', item: 'Chain Repair', amount: '£35.00', time: '14 min ago', avatar: 'WC' },
+                  { name: 'Steph Gray-Blest', item: 'Diamond Cluster', amount: '£1,200.00', time: '31 min ago', avatar: 'SG' },
+                ].map((sale, i) => (
+                  <div class={`flex items-center gap-3 px-4 py-2.5 pos-sale-row ${i < 2 ? 'border-b border-gray-50' : ''}`} data-row={i}>
+                    <div class="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                      <span class="text-accent text-xs font-bold">{sale.avatar}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold text-gray-800 truncate">{sale.name}</p>
+                      <p class="text-xs text-gray-400 truncate">{sale.item}</p>
+                    </div>
+                    <div class="text-right flex-shrink-0">
+                      <p class="text-xs font-bold text-gray-900">{sale.amount}</p>
+                      <p class="text-xs text-gray-400">{sale.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Animated cursor -->
+            <div id="pos-cursor" class="absolute pointer-events-none z-20 transition-all duration-700 ease-in-out" style="left:200px;top:60px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 2L16 10L10 11L8 17L4 2Z" fill="white" stroke="#333" stroke-width="1.5"/>
+              </svg>
+              <div id="pos-tooltip" class="absolute left-5 top-0 bg-gray-900 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap opacity-0 transition-opacity duration-300">£1,284</div>
+            </div>
+
+            <!-- Payment received toast -->
+            <div id="pos-toast" class="absolute right-3 top-3 bg-white rounded-xl shadow-lg p-3 flex items-center gap-2 border border-gray-100 opacity-0 transition-all duration-500 translate-y-2">
+              <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-900">Payment Received</p>
+                <p class="text-xs text-gray-500">£450.00 · Card</p>
               </div>
             </div>
           </div>
 
-          <!-- Floating notification -->
-          <div class="absolute -right-4 top-1/4 bg-white rounded-xl shadow-soft p-3 animate-float">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 bg-pastel-green rounded-lg flex items-center justify-center">
-                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
+          <!-- ─── WEBSITE MOCKUP ─── -->
+          <div id="pd-screen-website" class="pd-screen hidden relative overflow-hidden" style="height:420px;">
+
+            <!-- VIEW 1: Website frontend preview -->
+            <div id="web-view-front" class="absolute inset-0 bg-white transition-opacity duration-700">
+              <!-- Hero section mockup -->
+              <div class="bg-gradient-to-br from-gray-900 to-gray-800 px-8 pt-6 pb-8">
+                <!-- Navbar -->
+                <div class="flex items-center justify-between mb-8">
+                  <div class="flex items-center gap-2">
+                    <div class="w-5 h-5 bg-blue-500 rounded-md"></div>
+                    <div class="w-16 h-2.5 bg-white/30 rounded-full"></div>
+                  </div>
+                  <div class="flex gap-4">
+                    {['','','',''].map(() => <div class="w-8 h-2 bg-white/20 rounded-full"></div>)}
+                    <div class="w-16 h-6 bg-blue-500 rounded-lg"></div>
+                  </div>
+                </div>
+                <!-- Hero text -->
+                <div class="max-w-xs">
+                  <div class="w-20 h-2 bg-blue-400/60 rounded-full mb-3"></div>
+                  <div class="w-48 h-5 bg-white/90 rounded-full mb-2"></div>
+                  <div class="w-36 h-5 bg-blue-400 rounded-full mb-4"></div>
+                  <div class="w-56 h-2 bg-white/30 rounded-full mb-1.5"></div>
+                  <div class="w-44 h-2 bg-white/30 rounded-full mb-5"></div>
+                  <div class="flex gap-3">
+                    <div class="w-24 h-7 bg-blue-500 rounded-lg"></div>
+                    <div class="w-24 h-7 bg-white/10 border border-white/20 rounded-lg"></div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p class="text-xs font-medium text-primary">Payment Received</p>
-                <p class="text-xs text-primary/60">$45.99</p>
+              <!-- Features strip -->
+              <div class="px-6 py-4 grid grid-cols-3 gap-3">
+                {['#dbeafe','#ede9fe','#dcfce7'].map((bg) => (
+                  <div class="rounded-xl p-3" style={`background:${bg}`}>
+                    <div class="w-6 h-6 bg-white rounded-lg mb-2 shadow-sm"></div>
+                    <div class="w-20 h-2.5 bg-gray-300 rounded-full mb-1"></div>
+                    <div class="w-16 h-2 bg-gray-200 rounded-full"></div>
+                  </div>
+                ))}
               </div>
+              <!-- View transition label -->
+              <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+                <div class="w-2 h-2 rounded-full bg-blue-500 web-dot" data-dot="0"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-200 web-dot" data-dot="1"></div>
+              </div>
+            </div>
+
+            <!-- VIEW 2: Analytics admin -->
+            <div id="web-view-admin" class="absolute inset-0 flex opacity-0 pointer-events-none transition-opacity duration-700">
+              <!-- Sidebar -->
+              <div class="w-36 bg-white border-r border-gray-100 flex flex-col p-3 gap-1 flex-shrink-0">
+                <div class="flex items-center gap-2 mb-3 px-1">
+                  <div class="w-6 h-6 bg-blue-600 rounded-md"></div>
+                  <span class="text-gray-900 text-xs font-bold">Analytics</span>
+                </div>
+                {['Overview','Traffic','Pages','Conversions','Settings'].map((item, i) => (
+                  <div class={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs ${i === 0 ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-500'}`}>
+                    <div class="w-1.5 h-1.5 rounded-full bg-current"></div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <!-- Main -->
+              <div class="flex-1 bg-gray-50 p-4 overflow-hidden">
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                  {[
+                    { label: 'Visitors',    value: '8,421',  change: '+18%' },
+                    { label: 'Conversions', value: '3.4%',   change: '+0.6%' },
+                    { label: 'Revenue',     value: '£12,840',change: '+24%' },
+                  ].map((stat) => (
+                    <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100 web-stat-card">
+                      <p class="text-gray-500 text-xs mb-1">{stat.label}</p>
+                      <p class="text-gray-900 font-bold text-lg leading-none">{stat.value}</p>
+                      <p class="text-xs mt-1 font-medium text-green-600">{stat.change} this week</p>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Chart — bars strictly increasing -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold text-gray-700">Weekly Traffic</span>
+                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-medium">7 days</span>
+                  </div>
+                  <div class="flex items-end gap-2 h-24">
+                    {[28, 38, 48, 58, 70, 84, 100].map((h, i) => (
+                      <div class="flex-1 flex flex-col items-center gap-1">
+                        <div
+                          class="w-full rounded-t-md web-bar transition-all duration-500"
+                          style={`height:${h}%; background: linear-gradient(to top, #2563eb, #60a5fa)`}
+                          data-bar={i}
+                        ></div>
+                        <span class="text-gray-400" style="font-size:8px">{['M','T','W','T','F','S','S'][i]}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p class="text-xs text-green-600 font-medium mt-2 text-right">↑ Traffic growing every day</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Animated cursor -->
+            <div id="web-cursor" class="absolute pointer-events-none z-20 transition-all duration-700 ease-in-out" style="left:200px;top:80px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 2L16 10L10 11L8 17L4 2Z" fill="white" stroke="#333" stroke-width="1.5"/>
+              </svg>
+              <div id="web-tooltip" class="absolute left-5 top-0 bg-gray-900 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap opacity-0 transition-opacity duration-300">8,421 visitors</div>
+            </div>
+          </div>
+
+          <!-- ─── HR MOCKUP ─── -->
+          <div id="pd-screen-hr" class="pd-screen hidden relative overflow-hidden" style="height:420px;">
+            <!-- Sidebar -->
+            <div class="absolute left-0 top-0 bottom-0 w-36 bg-white border-r border-gray-100 flex flex-col p-3 gap-1">
+              <div class="flex items-center gap-2 mb-3 px-1">
+                <div class="w-6 h-6 bg-violet-600 rounded-md"></div>
+                <span class="text-gray-900 text-xs font-bold">HR Portal</span>
+              </div>
+              {['Dashboard','Employees','Payroll','Leave','Reports'].map((item, i) => (
+                <div class={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs ${i === 0 ? 'bg-violet-50 text-violet-700 font-semibold' : 'text-gray-500'}`}>
+                  <div class="w-1.5 h-1.5 rounded-full bg-current"></div>
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <!-- Main -->
+            <div class="absolute left-36 right-0 top-0 bottom-0 bg-gray-50 p-4 overflow-hidden">
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                {[
+                  { label: 'Employees', value: '24', change: '2 new' },
+                  { label: 'Payroll Due', value: '£38,400', change: 'In 3 days' },
+                  { label: 'On Leave', value: '3', change: 'Today' },
+                ].map((stat) => (
+                  <div class="bg-white rounded-xl p-3 shadow-sm border border-gray-100 hr-stat-card">
+                    <p class="text-gray-500 text-xs mb-1">{stat.label}</p>
+                    <p class="text-gray-900 font-bold text-lg leading-none">{stat.value}</p>
+                    <p class="text-xs mt-1 font-medium text-violet-600">{stat.change}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Employee list -->
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b border-gray-50">
+                  <span class="text-xs font-semibold text-gray-700">Employees</span>
+                  <span class="text-xs text-violet-600 font-medium">Run Payroll</span>
+                </div>
+                {[
+                  { name: 'Sarah Johnson', role: 'Manager', status: 'Active', avatar: 'SJ' },
+                  { name: 'James Okafor', role: 'Developer', status: 'On Leave', avatar: 'JO' },
+                  { name: 'Priya Patel', role: 'Designer', status: 'Active', avatar: 'PP' },
+                ].map((emp, i) => (
+                  <div class={`flex items-center gap-3 px-4 py-2.5 hr-emp-row ${i < 2 ? 'border-b border-gray-50' : ''}`} data-emp={i}>
+                    <div class="w-7 h-7 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+                      <span class="text-violet-700 text-xs font-bold">{emp.avatar}</span>
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs font-semibold text-gray-800">{emp.name}</p>
+                      <p class="text-xs text-gray-400">{emp.role}</p>
+                    </div>
+                    <span class={`text-xs px-2 py-0.5 rounded-full font-medium ${emp.status === 'Active' ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>{emp.status}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Animated cursor -->
+            <div id="hr-cursor" class="absolute pointer-events-none z-20 transition-all duration-700 ease-in-out" style="left:200px;top:80px;">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 2L16 10L10 11L8 17L4 2Z" fill="white" stroke="#333" stroke-width="1.5"/>
+              </svg>
+              <div id="hr-tooltip" class="absolute left-5 top-0 bg-gray-900 text-white text-xs px-2 py-1 rounded-lg whitespace-nowrap opacity-0 transition-opacity duration-300">£38,400 payroll</div>
             </div>
           </div>
         </div>
@@ -168,14 +418,261 @@ const features = [
   </div>
 </section>
 
-<style>
-  [data-mockup][data-active-device="tablet"] .device-desktop {
-    max-width: 80%;
-    margin: 0 auto;
+<script>
+// ── Tab switching ──────────────────────────────────────────────
+const tabBtns = document.querySelectorAll<HTMLButtonElement>('.pd-tab-btn');
+const urlText = document.getElementById('pd-url-text')!;
+const urlMap: Record<string, string> = {
+  pos:     'app.truedesk.co.uk/pos/dashboard',
+  website: 'app.truedesk.co.uk/analytics',
+  hr:      'app.truedesk.co.uk/hr/dashboard',
+};
+
+function switchTab(id: string) {
+  // tabs
+  tabBtns.forEach(b => {
+    const active = b.dataset.tab === id;
+    b.classList.toggle('bg-gray-900', active);
+    b.classList.toggle('text-white', active);
+    b.classList.toggle('shadow', active);
+    b.classList.toggle('text-gray-500', !active);
+  });
+  // screens
+  document.querySelectorAll('.pd-screen').forEach(s => s.classList.add('hidden'));
+  document.getElementById(`pd-screen-${id}`)?.classList.remove('hidden');
+  // headings
+  document.querySelectorAll('.pd-heading').forEach(h => h.classList.add('hidden'));
+  document.getElementById(`pd-heading-${id}`)?.classList.remove('hidden');
+  // features
+  document.querySelectorAll('.pd-features').forEach(f => f.classList.add('hidden'));
+  document.getElementById(`pd-features-${id}`)?.classList.remove('hidden');
+  // cta
+  document.querySelectorAll('.pd-cta').forEach(c => c.classList.add('hidden'));
+  document.getElementById(`pd-cta-${id}`)?.classList.remove('hidden');
+  // url
+  urlText.textContent = urlMap[id];
+}
+
+tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab!)));
+
+// ── Shared cursor engine (smooth lerp + click pulse) ──────────
+function makeCursor(cursorEl: HTMLElement, tooltipEl: HTMLElement) {
+  let curX = 200, curY = 80;   // current rendered position
+  let tgtX = 200, tgtY = 80;   // target position
+  let clicking = false;
+
+  // Click ripple element
+  const ripple = document.createElement('div');
+  ripple.style.cssText = `
+    position:absolute; width:18px; height:18px;
+    border-radius:50%; background:rgba(99,102,241,0.35);
+    transform:scale(0); pointer-events:none; z-index:19;
+    transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    margin-left:-4px; margin-top:-4px;
+  `;
+  cursorEl.appendChild(ripple);
+
+  // RAF loop — lerps toward target
+  function tick() {
+    const ease = 0.10;
+    curX += (tgtX - curX) * ease;
+    curY += (tgtY - curY) * ease;
+    cursorEl.style.left = curX + 'px';
+    cursorEl.style.top  = curY + 'px';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function moveTo(x: number, y: number) { tgtX = x; tgtY = y; }
+
+  function click() {
+    clicking = true;
+    // Scale cursor down slightly
+    const svg = cursorEl.querySelector('svg') as SVGElement;
+    if (svg) { svg.style.transform = 'scale(0.82)'; svg.style.transition = 'transform 0.1s'; }
+    // Ripple out
+    ripple.style.transform = 'scale(1.6)';
+    ripple.style.opacity = '1';
+    setTimeout(() => {
+      if (svg) svg.style.transform = 'scale(1)';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.opacity = '0';
+      clicking = false;
+    }, 220);
   }
 
-  [data-mockup][data-active-device="mobile"] .device-desktop {
-    max-width: 50%;
-    margin: 0 auto;
+  function showTooltip(text: string) { tooltipEl.textContent = text; tooltipEl.style.opacity = '1'; }
+  function hideTooltip()              { tooltipEl.style.opacity = '0'; }
+
+  return { moveTo, click, showTooltip, hideTooltip };
+}
+
+// ── POS cursor ────────────────────────────────────────────────
+const posCursor  = document.getElementById('pos-cursor')!;
+const posTooltip = document.getElementById('pos-tooltip')!;
+const posToast   = document.getElementById('pos-toast')!;
+const pos = makeCursor(posCursor, posTooltip);
+
+// waypoints: {x, y, pause(ms), tooltip?, click?, toast?}
+const posWaypoints = [
+  { x:220, y:55,  pause:600  },                                    // move to sales card
+  { x:220, y:55,  pause:500,  tooltip:'£1,284 today' },
+  { x:220, y:55,  pause:300,  click:true },
+  { x:220, y:55,  pause:800  },
+  { x:340, y:55,  pause:500  },                                     // move to transactions
+  { x:340, y:55,  pause:500,  tooltip:'47 transactions' },
+  { x:340, y:55,  pause:300,  click:true },
+  { x:340, y:55,  pause:700  },
+  { x:240, y:185, pause:700  },                                     // move to first sale row
+  { x:240, y:185, pause:500,  tooltip:'Hasitha De Silva', row:0 },
+  { x:240, y:185, pause:300,  click:true, toast:true },
+  { x:240, y:185, pause:900  },
+  { x:240, y:215, pause:600  },                                     // second row
+  { x:240, y:215, pause:500,  tooltip:'Walk-in Customer', row:1 },
+  { x:240, y:215, pause:400  },
+  { x:220, y:55,  pause:400  },                                     // back to top
+];
+
+let posWpIdx = 0;
+let posToastTimer: ReturnType<typeof setTimeout>;
+
+function runPosStep() {
+  const wp = posWaypoints[posWpIdx % posWaypoints.length];
+  pos.moveTo(wp.x, wp.y);
+
+  if (wp.tooltip) pos.showTooltip(wp.tooltip); else pos.hideTooltip();
+  if (wp.click)   setTimeout(() => pos.click(), 200);
+
+  // highlight row
+  document.querySelectorAll<HTMLElement>('.pos-sale-row').forEach(r => r.style.background = '');
+  if (wp.row !== undefined) {
+    const row = document.querySelectorAll<HTMLElement>('.pos-sale-row')[wp.row];
+    if (row) row.style.background = '#f0f9ff';
   }
-</style>
+
+  // toast
+  if (wp.toast) {
+    clearTimeout(posToastTimer);
+    posToast.style.opacity = '1';
+    posToast.style.transform = 'translateY(0)';
+    posToastTimer = setTimeout(() => {
+      posToast.style.opacity = '0';
+      posToast.style.transform = 'translateY(-6px)';
+    }, 1800);
+  }
+
+  posWpIdx++;
+  setTimeout(runPosStep, wp.pause);
+}
+setTimeout(runPosStep, 800);
+
+// ── Website view switching (front → admin → front …) ──────────
+const webViewFront = document.getElementById('web-view-front')!;
+const webViewAdmin = document.getElementById('web-view-admin')!;
+const webDots      = document.querySelectorAll<HTMLElement>('.web-dot');
+
+let webShowingAdmin = false;
+
+function switchWebView() {
+  webShowingAdmin = !webShowingAdmin;
+  if (webShowingAdmin) {
+    webViewFront.style.opacity = '0';
+    webViewFront.style.pointerEvents = 'none';
+    webViewAdmin.style.opacity = '1';
+    webViewAdmin.style.pointerEvents = 'auto';
+    webDots[0]?.style && (webDots[0].style.background = '#e5e7eb');
+    webDots[1]?.style && (webDots[1].style.background = '#3b82f6');
+  } else {
+    webViewFront.style.opacity = '1';
+    webViewFront.style.pointerEvents = 'auto';
+    webViewAdmin.style.opacity = '0';
+    webViewAdmin.style.pointerEvents = 'none';
+    webDots[0]?.style && (webDots[0].style.background = '#3b82f6');
+    webDots[1]?.style && (webDots[1].style.background = '#e5e7eb');
+  }
+}
+
+setInterval(switchWebView, 3500);
+
+// ── Website cursor ────────────────────────────────────────────
+const webCursor  = document.getElementById('web-cursor')!;
+const webTooltip = document.getElementById('web-tooltip')!;
+const webBars    = document.querySelectorAll<HTMLElement>('.web-bar');
+const web = makeCursor(webCursor, webTooltip);
+
+const webWaypoints = [
+  { x:185, y:65,  pause:600 },
+  { x:185, y:65,  pause:500, tooltip:'8,421 visitors' },
+  { x:185, y:65,  pause:300, click:true },
+  { x:185, y:65,  pause:700 },
+  { x:270, y:65,  pause:500 },
+  { x:270, y:65,  pause:500, tooltip:'£12,840 revenue' },
+  { x:270, y:65,  pause:300, click:true },
+  { x:270, y:65,  pause:700 },
+  { x:330, y:310, pause:700, bar:6 },
+  { x:330, y:310, pause:500, tooltip:'Sunday — peak day', bar:6 },
+  { x:330, y:310, pause:300, click:true },
+  { x:330, y:310, pause:600 },
+  { x:290, y:310, pause:500, bar:4 },
+  { x:290, y:310, pause:500, tooltip:'Friday traffic', bar:4 },
+  { x:290, y:310, pause:400 },
+  { x:185, y:65,  pause:400 },
+];
+
+let webWpIdx = 0;
+function runWebStep() {
+  if (!webShowingAdmin) { webWpIdx++; setTimeout(runWebStep, 600); return; }
+  const wp = webWaypoints[webWpIdx % webWaypoints.length];
+  web.moveTo(wp.x, wp.y);
+  if (wp.tooltip) web.showTooltip(wp.tooltip); else web.hideTooltip();
+  if (wp.click)   setTimeout(() => web.click(), 200);
+  webBars.forEach((b, i) => {
+    b.style.background = i === (wp.bar ?? -1)
+      ? 'linear-gradient(to top,#1d4ed8,#93c5fd)'
+      : 'linear-gradient(to top,#2563eb,#60a5fa)';
+  });
+  webWpIdx++;
+  setTimeout(runWebStep, wp.pause);
+}
+setTimeout(runWebStep, 1200);
+
+// ── HR cursor ─────────────────────────────────────────────────
+const hrCursor  = document.getElementById('hr-cursor')!;
+const hrTooltip = document.getElementById('hr-tooltip')!;
+const hr = makeCursor(hrCursor, hrTooltip);
+
+const hrWaypoints = [
+  { x:185, y:60,  pause:600 },
+  { x:185, y:60,  pause:500, tooltip:'24 employees' },
+  { x:185, y:60,  pause:300, click:true },
+  { x:185, y:60,  pause:700 },
+  { x:295, y:60,  pause:500 },
+  { x:295, y:60,  pause:500, tooltip:'£38,400 payroll due' },
+  { x:295, y:60,  pause:300, click:true },
+  { x:295, y:60,  pause:700 },
+  { x:230, y:198, pause:600, row:0 },
+  { x:230, y:198, pause:500, tooltip:'Sarah Johnson — Manager', row:0 },
+  { x:230, y:198, pause:300, click:true },
+  { x:230, y:198, pause:700 },
+  { x:230, y:226, pause:500, row:1 },
+  { x:230, y:226, pause:500, tooltip:'James Okafor — On Leave', row:1 },
+  { x:230, y:226, pause:400 },
+  { x:185, y:60,  pause:400 },
+];
+
+let hrWpIdx = 0;
+function runHrStep() {
+  const wp = hrWaypoints[hrWpIdx % hrWaypoints.length];
+  hr.moveTo(wp.x, wp.y);
+  if (wp.tooltip) hr.showTooltip(wp.tooltip); else hr.hideTooltip();
+  if (wp.click)   setTimeout(() => hr.click(), 200);
+  document.querySelectorAll<HTMLElement>('.hr-emp-row').forEach(r => r.style.background = '');
+  if (wp.row !== undefined) {
+    const row = document.querySelectorAll<HTMLElement>('.hr-emp-row')[wp.row];
+    if (row) row.style.background = '#f5f3ff';
+  }
+  hrWpIdx++;
+  setTimeout(runHrStep, wp.pause);
+}
+setTimeout(runHrStep, 1000);
+</script>

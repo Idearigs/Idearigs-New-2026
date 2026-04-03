@@ -82,7 +82,7 @@ const platforms = [
             Marketing that
             <span class="text-accent">delivers growth</span>
           </h1>
-          <p class="text-lg text-primary/70 mb-8 max-w-xl">
+          <p class="text-lg text-gray-600 mb-8 max-w-xl">
             From SEO to social media, we create data-driven marketing strategies that attract, engage, and convert your ideal customers.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
@@ -123,16 +123,16 @@ const platforms = [
                 <!-- Stats -->
                 <div class="grid grid-cols-3 gap-4">
                   <div class="bg-white rounded-xl p-3 shadow-sm">
-                    <div class="text-xs text-primary/60 mb-1">Visitors</div>
-                    <div class="text-lg font-bold text-primary">24.5K</div>
+                    <div class="text-xs text-gray-600 mb-1">Visitors</div>
+                    <div class="text-lg font-bold text-gray-900">24.5K</div>
                   </div>
                   <div class="bg-white rounded-xl p-3 shadow-sm">
-                    <div class="text-xs text-primary/60 mb-1">Conversions</div>
+                    <div class="text-xs text-gray-600 mb-1">Conversions</div>
                     <div class="text-lg font-bold text-accent">1,234</div>
                   </div>
                   <div class="bg-white rounded-xl p-3 shadow-sm">
-                    <div class="text-xs text-primary/60 mb-1">Revenue</div>
-                    <div class="text-lg font-bold text-primary">$48K</div>
+                    <div class="text-xs text-gray-600 mb-1">Revenue</div>
+                    <div class="text-lg font-bold text-gray-900">$48K</div>
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ const platforms = [
           Full-funnel marketing
           <span class="text-accent">solutions</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           Comprehensive digital marketing services to grow your business at every stage of the customer journey.
         </p>
       </div>
@@ -176,41 +176,41 @@ const platforms = [
           <Card variant={service.color as any} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
             <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4">
               {service.icon === 'search' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               )}
               {service.icon === 'click' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                 </svg>
               )}
               {service.icon === 'social' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               )}
               {service.icon === 'content' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               )}
               {service.icon === 'email' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               )}
               {service.icon === 'analytics' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               )}
             </div>
-            <h3 class="text-xl font-semibold text-primary mb-2">{service.title}</h3>
-            <p class="text-primary/70 mb-4">{service.description}</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
+            <p class="text-gray-600 mb-4">{service.description}</p>
             <div class="flex flex-wrap gap-2">
               {service.metrics.map((metric) => (
-                <span class="text-xs font-medium px-2 py-1 bg-white/50 rounded-full text-primary/70">{metric}</span>
+                <span class="text-xs font-medium px-2 py-1 bg-white/50 rounded-full text-gray-600">{metric}</span>
               ))}
             </div>
           </Card>
@@ -228,7 +228,7 @@ const platforms = [
           Expert across all
           <span class="text-accent">major platforms</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           We're certified partners with the world's leading advertising and marketing platforms.
         </p>
       </div>
@@ -237,9 +237,9 @@ const platforms = [
         {platforms.map((platform, index) => (
           <div class={`bg-white rounded-xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
             <div class="w-12 h-12 bg-pastel-blue rounded-xl flex items-center justify-center mx-auto mb-3">
-              <span class="text-lg font-bold text-primary">{platform.charAt(0)}</span>
+              <span class="text-lg font-bold text-gray-900">{platform.charAt(0)}</span>
             </div>
-            <p class="font-medium text-primary">{platform}</p>
+            <p class="font-medium text-gray-900">{platform}</p>
           </div>
         ))}
       </div>

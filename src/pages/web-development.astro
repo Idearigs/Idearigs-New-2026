@@ -92,7 +92,7 @@ const process = [
             Websites that
             <span class="text-accent">drive results</span>
           </h1>
-          <p class="text-lg text-primary/70 mb-8 max-w-xl">
+          <p class="text-lg text-gray-600 mb-8 max-w-xl">
             From stunning landing pages to complex web applications, we build digital experiences that engage users and achieve your business objectives.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
@@ -149,7 +149,7 @@ const process = [
           Full-stack development
           <span class="text-accent">services</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           Whatever your web development needs, we have the expertise to deliver exceptional results.
         </p>
       </div>
@@ -159,38 +159,38 @@ const process = [
           <Card variant={service.color as any} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
             <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4">
               {service.icon === 'code' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               )}
               {service.icon === 'cart' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               )}
               {service.icon === 'mobile' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               )}
               {service.icon === 'api' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               )}
               {service.icon === 'edit' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
               )}
               {service.icon === 'refresh' && (
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
               )}
             </div>
-            <h3 class="text-xl font-semibold text-primary mb-2">{service.title}</h3>
-            <p class="text-primary/70">{service.description}</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
+            <p class="text-gray-600">{service.description}</p>
           </Card>
         ))}
       </div>
@@ -206,7 +206,7 @@ const process = [
           Modern tech stack for
           <span class="text-accent">optimal results</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           We use the latest technologies to build fast, scalable, and maintainable web solutions.
         </p>
       </div>
@@ -215,10 +215,10 @@ const process = [
         {technologies.map((tech, index) => (
           <div class={`bg-white rounded-xl p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
             <div class="w-12 h-12 bg-pastel-purple rounded-xl flex items-center justify-center mx-auto mb-3">
-              <span class="text-lg font-bold text-primary">{tech.name.charAt(0)}</span>
+              <span class="text-lg font-bold text-gray-900">{tech.name.charAt(0)}</span>
             </div>
-            <p class="font-medium text-primary">{tech.name}</p>
-            <p class="text-sm text-primary/60">{tech.category}</p>
+            <p class="font-medium text-gray-900">{tech.name}</p>
+            <p class="text-sm text-gray-600">{tech.category}</p>
           </div>
         ))}
       </div>
@@ -234,7 +234,7 @@ const process = [
           How we bring your
           <span class="text-accent">vision to life</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           A proven methodology that ensures successful project delivery every time.
         </p>
       </div>
@@ -243,8 +243,8 @@ const process = [
         {process.map((item, index) => (
           <div class={`relative animate-on-scroll animation-delay-${(index + 1) * 100}`}>
             <div class="text-6xl font-bold text-accent/10 mb-4">{item.step}</div>
-            <h3 class="text-xl font-semibold text-primary mb-2">{item.title}</h3>
-            <p class="text-primary/70">{item.description}</p>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-600">{item.description}</p>
 
             {index < process.length - 1 && (
               <div class="hidden lg:block absolute top-8 right-0 w-full h-0.5 bg-accent/10 -mr-4"></div>

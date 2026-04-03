@@ -5,17 +5,17 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#002E2C',
-          50: '#E6F0EF',
-          100: '#CCE0DF',
-          200: '#99C1BF',
-          300: '#66A29F',
-          400: '#33837F',
-          500: '#002E2C',
-          600: '#002523',
-          700: '#001C1A',
-          800: '#001311',
-          900: '#000908'
+          DEFAULT: '#046645',
+          50: '#E6F4EF',
+          100: '#C2E4D4',
+          200: '#85C9A9',
+          300: '#48AE7E',
+          400: '#0B9358',
+          500: '#046645',
+          600: '#035438',
+          700: '#02432C',
+          800: '#023120',
+          900: '#012014'
         },
         accent: {
           DEFAULT: '#6366F1',
@@ -31,7 +31,7 @@ export default {
           900: '#1315D1'
         },
         background: {
-          DEFAULT: '#F8F9FB',
+          DEFAULT: '#FCFBFA',
           white: '#FFFFFF',
           muted: '#F1F3F5'
         },
@@ -56,8 +56,8 @@ export default {
         'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
         'soft-lg': '0 8px 40px rgba(0, 0, 0, 0.12)',
         'soft-xl': '0 12px 60px rgba(0, 0, 0, 0.16)',
-        'card': '0 2px 12px rgba(0, 46, 44, 0.08)',
-        'card-hover': '0 8px 30px rgba(0, 46, 44, 0.12)'
+        'card': '0 2px 12px rgba(4, 102, 69, 0.08)',
+        'card-hover': '0 8px 30px rgba(4, 102, 69, 0.12)'
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

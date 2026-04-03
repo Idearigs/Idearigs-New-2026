@@ -1,95 +1,165 @@
 ---
 const testimonials = [
   {
-    quote: "Idearigs transformed our retail operations completely. Their POS system reduced our checkout time by 40% and gave us insights we never had before.",
-    author: "Sarah Johnson",
-    role: "CEO, RetailPlus",
-    company: "RetailPlus",
-    initials: "SJ"
+    quote: "Idearigs completely transformed how we run our jewellery shop. TrueDesk handles our sales, repairs and payroll in one place — it's saved us hours every single week. The team understood our business from day one.",
+    author: "Hasitha De Silva",
+    role: "Owner",
+    company: "McCulloch Jewellers",
+    initials: "HD",
+    color: "#6366f1",
+    bg: "#eef2ff",
+    service: "POS & TrueDesk"
   },
   {
-    quote: "The web development team delivered beyond our expectations. Our new e-commerce platform has increased online sales by 200% in just six months.",
-    author: "Michael Chen",
-    role: "Founder, TechStart",
-    company: "TechStart",
-    initials: "MC"
+    quote: "Our new e-commerce website has opened up sales across Europe. Idearigs built us something beautiful, fast, and easy to manage. Orders have grown significantly since the launch and customer feedback has been brilliant.",
+    author: "Rasika Adhikari",
+    role: "Director",
+    company: "Wonders of Lanka Pvt Ltd",
+    initials: "RA",
+    color: "#10b981",
+    bg: "#f0fdf4",
+    service: "Web Development"
   },
   {
-    quote: "Their digital marketing expertise helped us reach customers we never thought possible. ROI on our campaigns has been exceptional.",
-    author: "Emily Rodriguez",
-    role: "Marketing Director, GrowthCo",
-    company: "GrowthCo",
-    initials: "ER"
-  }
+    quote: "We needed a reliable digital presence and a team that understood the travel industry. Idearigs delivered a stunning website and a marketing strategy that brought in real enquiries. Professional, responsive and results-focused.",
+    author: "Bagya De Silva",
+    role: "Founder",
+    company: "Silanka Viaggi Tourism",
+    initials: "BD",
+    color: "#f97316",
+    bg: "#fff7ed",
+    service: "Web & Digital Marketing"
+  },
+  {
+    quote: "Idearigs built our booking platform from scratch and managed the entire process smoothly. Our online presence went from zero to fully operational within weeks. Their support team is always available when we need them.",
+    author: "Nalin Fernando",
+    role: "Managing Director",
+    company: "Coastline Lanka Travels",
+    initials: "NF",
+    color: "#0ea5e9",
+    bg: "#f0f9ff",
+    service: "Web Development"
+  },
+  {
+    quote: "The school management system Idearigs developed has streamlined our administrative work enormously. Staff can now manage timetables, communications and records with ease. It's been a genuine step forward for our institution.",
+    author: "Nadu De Silva",
+    role: "Administrator",
+    company: "St. Peters College",
+    initials: "ND",
+    color: "#8b5cf6",
+    bg: "#f5f3ff",
+    service: "Custom Software"
+  },
 ];
 ---
 
-<section class="section-padding bg-primary text-white overflow-hidden">
+<section class="section-padding bg-white overflow-hidden">
   <div class="container-custom">
-    <!-- Section header -->
-    <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-      <span class="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-white/10 text-white mb-4">
-        Client Success Stories
-      </span>
-      <h2 class="mb-6">
-        What our clients
-        <span class="text-accent-300">say about us</span>
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
+      <span class="badge-accent mb-4">Client Stories</span>
+      <h2 class="text-gray-900 mb-4">
+        Trusted by businesses
+        <span class="text-accent"> across industries.</span>
       </h2>
-      <p class="text-lg text-white/70">
-        Don't just take our word for it. Here's what business leaders say about working with Idearigs.
+      <p class="text-lg text-gray-500">
+        Real results from real clients — here's what the people we work with say about Idearigs.
       </p>
     </div>
 
-    <!-- Testimonials grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {testimonials.map((testimonial, index) => (
-        <div class={`bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100}`}>
-          <!-- Quote icon -->
-          <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center mb-6">
-            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-            </svg>
-          </div>
+    <!-- Stats bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden mb-14 border border-gray-100 animate-on-scroll">
+      {[
+        { value: '500+',  label: 'Happy Clients' },
+        { value: '1,000+',label: 'Projects Delivered' },
+        { value: '98%',   label: 'Client Retention' },
+        { value: '10+',   label: 'Years Experience' },
+      ].map(s => (
+        <div class="bg-white px-6 py-6 text-center">
+          <p class="text-3xl font-black text-gray-900 mb-1">{s.value}</p>
+          <p class="text-sm text-gray-500 font-medium">{s.label}</p>
+        </div>
+      ))}
+    </div>
 
-          <!-- Quote -->
-          <blockquote class="text-lg text-white/90 mb-8 leading-relaxed">
-            "{testimonial.quote}"
-          </blockquote>
+    <!-- Testimonials grid — 3 top + 2 bottom centred -->
+    <div class="grid md:grid-cols-3 gap-5 mb-5">
+      {testimonials.slice(0, 3).map((t, i) => (
+        <div class="group relative bg-white rounded-2xl p-7 border hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden animate-on-scroll"
+          style={`border-color:${t.color}30;`}>
 
-          <!-- Author -->
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-              <span class="text-sm font-bold text-accent">{testimonial.initials}</span>
+          <!-- Top tint -->
+          <div class="absolute top-0 left-0 right-0 h-16 rounded-t-2xl pointer-events-none" style={`background:linear-gradient(to bottom,${t.bg},transparent);`}></div>
+          <!-- Hover glow -->
+          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={`box-shadow:0 0 32px 0 ${t.color}18;`}></div>
+
+          <div class="relative">
+            <!-- Stars -->
+            <div class="flex gap-0.5 mb-4">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-4 h-4" style={`color:${t.color}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
             </div>
-            <div>
-              <p class="font-semibold text-white">{testimonial.author}</p>
-              <p class="text-sm text-white/60">{testimonial.role}</p>
+
+            <!-- Service tag -->
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full mb-4 inline-block" style={`color:${t.color};background:${t.bg};border:1px solid ${t.color}30;`}>{t.service}</span>
+
+            <!-- Quote -->
+            <blockquote class="text-gray-700 text-sm leading-relaxed mb-6">
+              "{t.quote}"
+            </blockquote>
+
+            <!-- Author -->
+            <div class="flex items-center gap-3 pt-4 border-t" style={`border-color:${t.color}20;`}>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold" style={`background:${t.color};`}>{t.initials}</div>
+              <div>
+                <p class="text-sm font-bold text-gray-900">{t.author}</p>
+                <p class="text-xs text-gray-500">{t.role}, {t.company}</p>
+              </div>
             </div>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- Trust indicators -->
-    <div class="mt-16 pt-16 border-t border-white/10">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="animate-on-scroll">
-          <p class="text-4xl md:text-5xl font-bold text-white mb-2">500+</p>
-          <p class="text-white/60">Happy Clients</p>
+    <!-- Bottom 2 cards centred -->
+    <div class="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      {testimonials.slice(3).map((t, i) => (
+        <div class="group relative bg-white rounded-2xl p-7 border hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden animate-on-scroll"
+          style={`border-color:${t.color}30;`}>
+
+          <div class="absolute top-0 left-0 right-0 h-16 rounded-t-2xl pointer-events-none" style={`background:linear-gradient(to bottom,${t.bg},transparent);`}></div>
+          <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={`box-shadow:0 0 32px 0 ${t.color}18;`}></div>
+
+          <div class="relative">
+            <div class="flex gap-0.5 mb-4">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-4 h-4" style={`color:${t.color}`} fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full mb-4 inline-block" style={`color:${t.color};background:${t.bg};border:1px solid ${t.color}30;`}>{t.service}</span>
+
+            <blockquote class="text-gray-700 text-sm leading-relaxed mb-6">
+              "{t.quote}"
+            </blockquote>
+
+            <div class="flex items-center gap-3 pt-4 border-t" style={`border-color:${t.color}20;`}>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold" style={`background:${t.color};`}>{t.initials}</div>
+              <div>
+                <p class="text-sm font-bold text-gray-900">{t.author}</p>
+                <p class="text-xs text-gray-500">{t.role}, {t.company}</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="animate-on-scroll animation-delay-100">
-          <p class="text-4xl md:text-5xl font-bold text-white mb-2">1000+</p>
-          <p class="text-white/60">Projects Delivered</p>
-        </div>
-        <div class="animate-on-scroll animation-delay-200">
-          <p class="text-4xl md:text-5xl font-bold text-white mb-2">98%</p>
-          <p class="text-white/60">Client Retention</p>
-        </div>
-        <div class="animate-on-scroll animation-delay-300">
-          <p class="text-4xl md:text-5xl font-bold text-white mb-2">10+</p>
-          <p class="text-white/60">Years Experience</p>
-        </div>
-      </div>
+      ))}
     </div>
+
   </div>
 </section>

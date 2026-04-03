@@ -83,7 +83,7 @@ const timeline = [
           Transforming businesses through
           <span class="text-accent">technology</span>
         </h1>
-        <p class="text-lg text-primary/70 mb-8 max-w-2xl mx-auto">
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           We're a team of passionate technologists, designers, and strategists dedicated to helping businesses thrive in the digital age.
         </p>
       </div>
@@ -114,10 +114,10 @@ const timeline = [
             Empowering businesses to
             <span class="text-accent">reach their potential</span>
           </h2>
-          <p class="text-lg text-primary/70 mb-6">
+          <p class="text-lg text-gray-600 mb-6">
             We believe that every business deserves access to world-class technology solutions. Our mission is to bridge the gap between innovation and implementation, making powerful tools accessible to businesses of all sizes.
           </p>
-          <p class="text-lg text-primary/70">
+          <p class="text-lg text-gray-600">
             From startups to enterprises, we partner with our clients to understand their unique challenges and deliver solutions that drive real, measurable results.
           </p>
         </div>
@@ -149,8 +149,8 @@ const timeline = [
                   </svg>
                 )}
               </div>
-              <h3 class="font-semibold text-primary mb-2">{value.title}</h3>
-              <p class="text-sm text-primary/70">{value.description}</p>
+              <h3 class="font-semibold text-gray-900 mb-2">{value.title}</h3>
+              <p class="text-sm text-gray-600">{value.description}</p>
             </div>
           ))}
         </div>
@@ -167,7 +167,7 @@ const timeline = [
           Meet the people behind
           <span class="text-accent">Idearigs</span>
         </h2>
-        <p class="text-lg text-primary/70">
+        <p class="text-lg text-gray-600">
           A diverse team of experts united by a shared passion for technology and innovation.
         </p>
       </div>
@@ -178,15 +178,15 @@ const timeline = [
             <div class="w-24 h-24 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-white">{member.initials}</span>
             </div>
-            <h3 class="font-semibold text-primary">{member.name}</h3>
+            <h3 class="font-semibold text-gray-900">{member.name}</h3>
             <p class="text-accent text-sm mb-2">{member.role}</p>
-            <p class="text-sm text-primary/60">{member.bio}</p>
+            <p class="text-sm text-gray-600">{member.bio}</p>
           </div>
         ))}
       </div>
 
       <div class="text-center mt-12 animate-on-scroll">
-        <p class="text-primary/70 mb-4">Want to join our team?</p>
+        <p class="text-gray-600 mb-4">Want to join our team?</p>
         <Button href="/careers" variant="secondary">
           View Open Positions
         </Button>
@@ -215,8 +215,8 @@ const timeline = [
               <div class={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} pl-12 md:pl-0`}>
                 <div class="bg-background rounded-xl p-6">
                   <span class="text-accent font-bold">{item.year}</span>
-                  <h3 class="text-xl font-semibold text-primary mt-1">{item.title}</h3>
-                  <p class="text-primary/70 mt-2">{item.description}</p>
+                  <h3 class="text-xl font-semibold text-gray-900 mt-1">{item.title}</h3>
+                  <p class="text-gray-600 mt-2">{item.description}</p>
                 </div>
               </div>
 
