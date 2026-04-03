@@ -32,9 +32,29 @@ const navItems = [
 ];
 ---
 
+<!-- Announcement Banner -->
+<div id="announcement-banner" class="relative z-50 flex items-center justify-center px-4 py-2.5 text-sm font-medium" style="background:linear-gradient(90deg,#e0f2fe,#d1fae5,#ede9fe);">
+  <div class="flex items-center gap-2.5 text-gray-800">
+    <span class="inline-flex items-center gap-1.5 bg-white/60 border border-white/80 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-xs font-bold" style="color:#046645;">
+      <span class="w-1.5 h-1.5 rounded-full animate-pulse inline-block" style="background:#10b981;"></span>
+      NEW
+    </span>
+    <span>Introducing TrueDesk — the all-in-one business platform for POS, HR, payroll & more.</span>
+    <span class="hidden sm:inline text-gray-400">|</span>
+    <a href="https://truedesk.co.uk" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1 font-semibold hover:underline transition-all" style="color:#046645;">
+      Explore now
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+  <button id="close-banner" aria-label="Dismiss" class="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center rounded-full hover:bg-black/8 transition-colors text-gray-500 hover:text-gray-800">
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+</div>
+
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed left-0 right-0 z-50 transition-all duration-300"
+  style="top:var(--banner-height,44px);"
 >
   <div class="container-custom">
     <nav class="flex items-center justify-between h-20">
@@ -136,8 +156,32 @@ const navItems = [
 </header>
 
 <script>
-  // Header scroll effect
+  // ── Announcement banner dismiss ──
+  const banner = document.getElementById('announcement-banner');
+  const closeBtn = document.getElementById('close-banner');
   const header = document.getElementById('main-header');
+
+  function setBannerHeight() {
+    const h = banner ? banner.offsetHeight : 0;
+    document.documentElement.style.setProperty('--banner-height', `${h}px`);
+  }
+
+  if (sessionStorage.getItem('banner-dismissed')) {
+    banner?.remove();
+    document.documentElement.style.setProperty('--banner-height', '0px');
+  } else {
+    setBannerHeight();
+    window.addEventListener('resize', setBannerHeight);
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    banner?.remove();
+    document.documentElement.style.setProperty('--banner-height', '0px');
+    sessionStorage.setItem('banner-dismissed', '1');
+  });
+
+  // ── Header scroll effect ──
+  // header already declared above
 
   function handleScroll() {
     if (window.scrollY > 50) {
