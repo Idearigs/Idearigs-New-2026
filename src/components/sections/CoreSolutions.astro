@@ -65,10 +65,10 @@ const solutions = [
     </div>
 
     <!-- Solutions grid -->
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 gap-5 md:gap-8">
       {solutions.map((solution, index) => (
         <div
-          class={`solution-card relative rounded-2xl p-8 border border-black/5 transition-all duration-300 hover:-translate-y-1 animate-on-scroll animation-delay-${(index + 1) * 100}`}
+          class={`solution-card relative rounded-2xl p-6 md:p-8 border border-black/5 transition-all duration-300 hover:-translate-y-1 animate-on-scroll animation-delay-${(index + 1) * 100}`}
           style={`background:${solution.bg};`}
           data-glow={solution.glow}
         >

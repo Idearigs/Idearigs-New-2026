@@ -37,7 +37,7 @@ const ctaLinks = {
 
 <section class="section-padding bg-background overflow-hidden">
   <div class="container-custom">
-    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+    <div class="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-start">
 
       <!-- Left: content (switches per tab) -->
       <div class="lg:sticky lg:top-32 animate-on-scroll">
@@ -117,8 +117,8 @@ const ctaLinks = {
         ))}
       </div>
 
-      <!-- Right: tabs + mockup -->
-      <div class="animate-on-scroll animation-delay-200">
+      <!-- Right: tabs + mockup (hidden on mobile — complex absolute layout) -->
+      <div class="hidden md:block animate-on-scroll animation-delay-200">
 
         <!-- Tab switcher -->
         <div class="flex gap-2 mb-5 bg-white rounded-xl p-1.5 shadow-sm border border-gray-100 w-fit">

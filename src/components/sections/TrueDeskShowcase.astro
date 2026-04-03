@@ -33,20 +33,19 @@ const tiles = [
         <span class="text-sm font-semibold" style="color:#065f46;">Introducing TrueDesk</span>
         <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white" style="background:#10b981;">NEW</span>
       </div>
-      <h2 class="text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight mb-4">
-        One platform for<br/>
-        <span style="color:#6366f1;">your entire business.</span>
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight tracking-tight mb-4">
+        One platform for your entire business.
       </h2>
-      <p class="text-xl text-gray-500 leading-relaxed">
+      <p class="text-base sm:text-xl text-gray-500 leading-relaxed">
         TrueDesk replaces your POS, HR software, payroll tools, repair tracker, and staff rota — one subscription, one login.
       </p>
     </div>
 
     <!-- Glassmorphism module tiles -->
-    <div class="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto mb-10 td-reveal td-delay-1">
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3 max-w-4xl mx-auto mb-8 md:mb-10 td-reveal td-delay-1">
       {tiles.map((t) => (
         <button
-          class="td-tile group relative flex flex-col items-center gap-2.5 p-4 rounded-2xl cursor-pointer text-center transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+          class="td-tile group relative flex flex-col items-center gap-1.5 md:gap-2.5 p-2.5 md:p-4 rounded-xl md:rounded-2xl cursor-pointer text-center transition-all duration-300 hover:-translate-y-1 overflow-hidden"
           style={`background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 12px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);`}
           data-view={t.viewId}
           data-sidx={t.sIdx}
@@ -90,10 +89,10 @@ const tiles = [
           </div>
         </div>
 
-        <div class="flex" style="height:600px;">
+        <div class="flex" style="height:520px;">
 
-          <!-- Sidebar -->
-          <div class="w-48 bg-gray-50 border-r border-gray-100 flex flex-col p-3 flex-shrink-0">
+          <!-- Sidebar — hidden on mobile -->
+          <div class="hidden sm:flex w-40 md:w-48 bg-gray-50 border-r border-gray-100 flex-col p-3 flex-shrink-0">
             <div class="flex items-center gap-2 mb-5 px-2 pt-1">
               <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#6366f1,#06b6d4);">
                 <span class="text-white text-sm font-black">T</span>
