@@ -1,69 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/ui/Button.astro';
-import Card from '../components/ui/Card.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Lemon Squeezy checkout URLs
-// Replace the placeholder URLs below with your actual Lemon Squeezy
-// variant checkout links from your store dashboard.
-// Format: https://[your-store].lemonsqueezy.com/checkout/buy/[variant-id]
-// ─────────────────────────────────────────────────────────────────────────────
 const LEMON_SQUEEZY = {
   starter:  'https://idearigsonline.lemonsqueezy.com/checkout/buy/2f17bbb7-0504-473f-9767-99f9ab4ac576',
   growth:   'https://idearigs.lemonsqueezy.com/checkout/buy/growth-variant-id',
   business: 'https://idearigs.lemonsqueezy.com/checkout/buy/business-variant-id',
 };
 
+const stats = [
+  { value: '99.9%', label: 'Uptime SLA' },
+  { value: '24/7',  label: 'Monitoring' },
+  { value: '<4hr',  label: 'Response Time' },
+  { value: '30-day',label: 'Backup Retention' },
+];
+
 const features = [
-  {
-    title: 'Daily Backups',
-    description: 'Automated daily backups of all your server data with 30-day retention and one-click restore.',
-    icon: 'backup',
-    color: 'pastel-blue'
-  },
-  {
-    title: 'Proactive Maintenance',
-    description: 'Regular OS patches, security updates, and software upgrades applied during low-traffic windows.',
-    icon: 'wrench',
-    color: 'pastel-green'
-  },
-  {
-    title: '24/7 Monitoring',
-    description: 'Round-the-clock uptime, CPU, memory, and disk monitoring with instant alerting.',
-    icon: 'monitor',
-    color: 'pastel-purple'
-  },
-  {
-    title: 'Security Hardening',
-    description: 'Firewall configuration, fail2ban, SSL certificate management, and vulnerability scanning.',
-    icon: 'shield',
-    color: 'pastel-pink'
-  },
-  {
-    title: 'Performance Tuning',
-    description: 'Optimise web server, database, and caching layer configs to keep response times fast.',
-    icon: 'speed',
-    color: 'pastel-yellow'
-  },
-  {
-    title: 'Dedicated Support',
-    description: 'Direct access to our engineers via email and chat — real people, not bots.',
-    icon: 'support',
-    color: 'pastel-orange'
-  }
+  { title: 'Daily Backups',         desc: 'Automated encrypted backups with 30-day retention and one-click restore.',             icon: 'M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4', color: '#6366f1', bg: '#eef2ff', border: '#c7d2fe' },
+  { title: 'Proactive Maintenance', desc: 'OS patches, security updates, and software upgrades applied during low-traffic windows.', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z', color: '#10b981', bg: '#f0fdf4', border: '#bbf7d0' },
+  { title: '24/7 Monitoring',       desc: 'Round-the-clock uptime, CPU, memory, and disk monitoring with instant alerting.',       icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', color: '#f97316', bg: '#fff7ed', border: '#fed7aa' },
+  { title: 'Security Hardening',    desc: 'Firewall config, fail2ban, SSL management, WAF, and regular vulnerability scanning.',   icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', color: '#ec4899', bg: '#fdf2f8', border: '#fbcfe8' },
+  { title: 'Performance Tuning',    desc: 'Web server, database, and caching optimisation to keep response times consistently fast.', icon: 'M13 10V3L4 14h7v7l9-11h-7z', color: '#f59e0b', bg: '#fffbeb', border: '#fde68a' },
+  { title: 'Dedicated Support',     desc: 'Direct access to engineers via email and chat — real people, not bots or ticket queues.', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z', color: '#0ea5e9', bg: '#f0f9ff', border: '#bae6fd' },
 ];
 
 const plans = [
   {
-    name: 'Standard Managed Support',
+    name: 'Standard',
+    subtitle: 'Managed Support',
     price: '£110',
     period: '/month',
     highlight: false,
     badge: null,
     description: 'Consistent uptime and security for business-critical applications.',
-    servers: 'Covers your 2 servers',
+    servers: 'Covers up to 2 servers',
+    color: '#6366f1',
+    bg: '#eef2ff',
     features: [
       'Full Infrastructure Oversight',
       'Daily Encrypted Backups (30-day)',
@@ -74,19 +46,21 @@ const plans = [
     ],
     cta: 'Get Started',
     href: LEMON_SQUEEZY.starter,
-    variant: 'secondary' as const,
   },
   {
-    name: 'Professional Performance',
+    name: 'Professional',
+    subtitle: 'Performance',
     price: '£220',
     period: '/month',
     highlight: true,
     badge: 'Most Popular',
-    description: 'Proactive performance tuning and advanced security for high-traffic e-commerce and SaaS.',
+    description: 'Proactive performance tuning and advanced security for high-traffic applications.',
     servers: 'High-traffic e-commerce & SaaS',
+    color: '#046645',
+    bg: '#f0fdf4',
     features: [
       'Hourly Database Backups',
-      '1-min Interval Monitoring + Heartbeat Checks',
+      '1-min Interval Monitoring + Heartbeat',
       'Advanced WAF + Malware Scanning',
       'Monthly DB & Cache Optimisation',
       'OS & Security Patching',
@@ -94,18 +68,20 @@ const plans = [
     ],
     cta: 'Subscribe Now',
     href: LEMON_SQUEEZY.growth,
-    variant: 'primary' as const,
   },
   {
-    name: 'High-Security Enterprise',
+    name: 'Enterprise',
+    subtitle: 'High-Security',
     price: '£385',
     period: '/month',
     highlight: false,
     badge: null,
     description: 'Total protection for mission-critical systems. Downtime is not an option.',
     servers: 'Large-scale POS & Enterprise',
+    color: '#8b5cf6',
+    bg: '#f5f3ff',
     features: [
-      'Multi-region Monitoring + 99.9% Uptime SLA',
+      'Multi-region Monitoring + 99.9% SLA',
       'Monthly Vulnerability Audits',
       'Advanced WAF, IDS & Load Balancing',
       'Monthly DB & Performance Optimisation',
@@ -114,296 +90,228 @@ const plans = [
     ],
     cta: 'Subscribe Now',
     href: LEMON_SQUEEZY.business,
-    variant: 'secondary' as const,
   }
 ];
 
 const faqs = [
-  {
-    q: 'What types of servers do you manage?',
-    a: 'We manage Linux VPS and dedicated servers (Ubuntu, Debian, CentOS/AlmaLinux) hosted on any cloud provider — AWS, DigitalOcean, Hetzner, Linode, or your own data centre.'
-  },
-  {
-    q: 'How does billing work?',
-    a: 'Subscriptions are billed monthly via Lemon Squeezy. Your card is charged on the same date each month and you can cancel at any time from your customer portal.'
-  },
-  {
-    q: 'Can I upgrade or downgrade my plan?',
-    a: 'Yes — you can upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle.'
-  },
-  {
-    q: 'What happens after I subscribe?',
-    a: 'Within one business day of subscribing, an engineer will reach out to gather your server credentials and onboard your servers securely using SSH key authentication.'
-  },
-  {
-    q: 'Do you offer a custom plan for more servers?',
-    a: 'Absolutely. If you manage more than 10 servers, get in touch and we will build a bespoke plan for you.'
-  }
+  { q: 'What types of servers do you manage?',      a: 'We manage Linux VPS and dedicated servers (Ubuntu, Debian, CentOS/AlmaLinux) hosted on any cloud provider — AWS, DigitalOcean, Hetzner, Linode, or your own data centre.' },
+  { q: 'How does billing work?',                    a: 'Subscriptions are billed monthly via Lemon Squeezy. Your card is charged on the same date each month and you can cancel at any time from your customer portal.' },
+  { q: 'Can I upgrade or downgrade my plan?',       a: 'Yes — you can upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle.' },
+  { q: 'What happens after I subscribe?',           a: 'Within one business day, an engineer will reach out to gather your server credentials and onboard your servers securely using SSH key authentication.' },
+  { q: 'Do you offer a custom plan for more servers?', a: 'Absolutely. If you manage more than 10 servers, get in touch and we will build a bespoke plan for you.' },
 ];
 ---
 
 <BaseLayout
-  title="Server Management"
-  description="Managed server services by Idearigs — daily backups, proactive maintenance, 24/7 monitoring, and security hardening. Plans from £100/month."
+  title="Server Management — Idearigs"
+  description="Managed server services by Idearigs — daily backups, proactive maintenance, 24/7 monitoring, and security hardening. Plans from £110/month."
 >
-  <!-- Hero -->
-  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gradient-subtle">
-    <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+  <!-- ── HERO ── -->
+  <section class="relative overflow-hidden bg-[#FCFBFA] pt-36 pb-20 lg:pt-44 lg:pb-28">
+    <div class="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-[130px] pointer-events-none opacity-50" style="background:radial-gradient(circle,rgba(99,102,241,0.08) 0%,transparent 70%);transform:translate(-40%,-40%)"></div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full blur-[100px] pointer-events-none opacity-40" style="background:radial-gradient(circle,rgba(4,102,69,0.07) 0%,transparent 70%);transform:translate(35%,35%)"></div>
+
+    <div class="container-custom relative">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left -->
         <div class="animate-on-scroll">
-          <span class="badge-accent mb-6">Server Management</span>
-          <h1 class="mb-6">
-            Your servers,
-            <span class="text-accent">expertly managed</span>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6" style="background:#f0fdf4;border-color:#bbf7d0;">
+            <span class="w-2 h-2 rounded-full animate-pulse" style="background:#10b981;"></span>
+            <span class="text-sm font-semibold" style="color:#065f46;">Managed Server Services</span>
+          </div>
+
+          <h1 class="text-gray-900 mb-6">
+            Your servers,<br/>
+            <span style="color:#046645;">expertly managed.</span>
           </h1>
-          <p class="text-lg text-gray-600 mb-8 max-w-xl">
-            Stop worrying about uptime, patches, and security. Our engineers handle daily backups,
-            proactive maintenance, and round-the-clock monitoring — so you can focus on your business.
+
+          <p class="text-lg text-gray-500 mb-8 max-w-lg leading-relaxed">
+            Stop worrying about uptime, patches, and security. Our engineers handle daily backups, proactive maintenance, and round-the-clock monitoring — so you can focus on your business.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <Button href="#pricing" variant="primary" size="lg">
+
+          <div class="flex flex-col sm:flex-row gap-3 mb-10">
+            <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white text-sm transition-all hover:scale-105 hover:shadow-lg" style="background:linear-gradient(135deg,#046645,#059669);box-shadow:0 4px 16px rgba(4,102,69,0.25);">
               View Plans
-            </Button>
-            <Button href="#contact" variant="secondary" size="lg">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-gray-700 text-sm border border-gray-200 bg-white hover:bg-gray-50 transition-all">
               Talk to an Engineer
-            </Button>
+            </a>
+          </div>
+
+          <!-- Stats row -->
+          <div class="grid grid-cols-4 gap-4">
+            {stats.map(s => (
+              <div class="text-center p-3 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                <p class="text-xl font-black text-gray-900 leading-none mb-1">{s.value}</p>
+                <p class="text-xs text-gray-400 font-medium">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <!-- Server illustration -->
+        <!-- Terminal mockup -->
         <div class="animate-on-scroll animation-delay-200">
-          <div class="bg-primary rounded-2xl shadow-soft-xl overflow-hidden animate-float">
-            <!-- Terminal bar -->
-            <div class="bg-primary-600 p-3 flex items-center gap-2">
+          <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-2xl" style="box-shadow:0 24px 60px rgba(0,0,0,0.10);">
+            <!-- Bar -->
+            <div class="bg-gray-50 px-4 py-3 flex items-center gap-3 border-b border-gray-100">
               <div class="flex gap-1.5">
-                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400"></div>
               </div>
-              <div class="flex-1 text-center text-white/50 text-sm">server-status</div>
+              <div class="flex-1 text-center text-xs text-gray-400 font-mono">idearigs — server-status</div>
             </div>
-            <!-- Terminal content -->
-            <div class="p-6 font-mono text-sm space-y-2">
-              <div class="text-green-400">$ uptime</div>
-              <div class="text-white/80">up 247 days, 14:32, load average: 0.12, 0.08, 0.05</div>
-              <div class="text-green-400 mt-2">$ df -h /</div>
-              <div class="text-white/80">Filesystem  Size  Used Avail Use%</div>
-              <div class="text-white/80">/dev/sda1   100G   42G   58G  42%</div>
-              <div class="text-green-400 mt-2">$ systemctl status nginx</div>
-              <div>
-                <span class="text-green-400">●</span>
-                <span class="text-white/80"> nginx.service — active </span>
-                <span class="text-green-400">(running)</span>
+            <!-- Terminal body -->
+            <div class="bg-gray-950 p-6 font-mono text-sm space-y-2 leading-relaxed">
+              <div><span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> <span class="text-white">uptime</span></div>
+              <div class="text-gray-400">up 247 days, 14:32 &nbsp; load: 0.12, 0.08, 0.05</div>
+              <div class="mt-3"><span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> <span class="text-white">df -h /</span></div>
+              <div class="text-gray-400">Filesystem &nbsp; Size &nbsp; Used &nbsp; Avail &nbsp; Use%</div>
+              <div class="text-gray-400">/dev/sda1 &nbsp; 100G &nbsp; 42G &nbsp; 58G &nbsp; <span class="text-emerald-400">42%</span></div>
+              <div class="mt-3"><span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> <span class="text-white">systemctl status nginx</span></div>
+              <div><span class="text-emerald-400">●</span><span class="text-gray-300"> nginx.service — </span><span class="text-emerald-400">active (running)</span></div>
+              <div class="text-gray-500 text-xs">Started Mon 2026-03-30 02:01 UTC; 4 days ago</div>
+              <div class="mt-3"><span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span> <span class="text-white">tail -n 3 /var/log/backup.log</span></div>
+              <div><span class="text-emerald-400">[OK]</span><span class="text-gray-300"> Daily backup completed — 09:00 UTC</span></div>
+              <div><span class="text-emerald-400">[OK]</span><span class="text-gray-300"> Snapshot uploaded to S3</span></div>
+              <div><span class="text-emerald-400">[OK]</span><span class="text-gray-300"> Retention policy enforced (30d)</span></div>
+              <div class="mt-3 flex items-center gap-2">
+                <span class="text-emerald-400">➜</span> <span class="text-cyan-400">~</span>
+                <span class="inline-block w-2 h-4 bg-emerald-400 animate-pulse rounded-sm"></span>
               </div>
-              <div class="text-white/40 text-xs mt-1">Started Mon 2026-03-30 02:01:12 UTC</div>
-              <div class="text-green-400 mt-2">$ tail -n 3 /var/log/backup.log</div>
-              <div class="text-white/80">[OK] Daily backup completed — 09:00 UTC</div>
-              <div class="text-white/80">[OK] Snapshot uploaded to S3</div>
-              <div class="text-white/80">[OK] Retention policy enforced</div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- ── FEATURES ── -->
   <section id="features" class="section-padding bg-white">
     <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
         <span class="badge-accent mb-4">What's Included</span>
-        <h2 class="mb-6">
-          Everything your servers
-          <span class="text-accent">need to thrive</span>
-        </h2>
-        <p class="text-lg text-gray-600">
-          Every plan includes the core pillars of reliable server operations — no hidden extras.
-        </p>
+        <h2 class="text-gray-900 mb-4">Everything your servers need to thrive.</h2>
+        <p class="text-lg text-gray-500">Every plan includes the core pillars of reliable server operations — no hidden extras.</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map((feature, index) => (
-          <Card variant={feature.color as any} padding="lg" class={`animate-on-scroll animation-delay-${(index + 1) * 100}`}>
-            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-4">
-              {feature.icon === 'backup' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {features.map((f, i) => (
+          <div class="group relative bg-white rounded-2xl p-6 border hover:-translate-y-1 hover:shadow-xl transition-all duration-300 overflow-hidden animate-on-scroll"
+            style={`border-color:${f.border};`}>
+            <div class="absolute top-0 left-0 right-0 h-20 rounded-t-2xl pointer-events-none" style={`background:linear-gradient(to bottom,${f.bg},transparent);`}></div>
+            <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={`box-shadow:0 0 32px 0 ${f.color}18;`}></div>
+            <div class="relative">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 border" style={`background:${f.bg};border-color:${f.border};`}>
+                <svg class="w-5 h-5" style={`color:${f.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={f.icon}/>
                 </svg>
-              )}
-              {feature.icon === 'wrench' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              )}
-              {feature.icon === 'monitor' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              )}
-              {feature.icon === 'shield' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              )}
-              {feature.icon === 'speed' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              )}
-              {feature.icon === 'support' && (
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              )}
+              </div>
+              <h3 class="text-gray-900 font-bold text-base mb-2">{f.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-            <p class="text-gray-600">{feature.description}</p>
-          </Card>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section id="pricing" class="section-padding bg-background">
+  <!-- ── PRICING ── -->
+  <section id="pricing" class="section-padding bg-[#FCFBFA]">
     <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
         <span class="badge-accent mb-4">Pricing</span>
-        <h2 class="mb-6">
-          Simple, transparent
-          <span class="text-accent">monthly pricing</span>
-        </h2>
-        <p class="text-lg text-gray-600">
-          All plans are billed monthly and include secure payment via Lemon Squeezy. Cancel any time.
-        </p>
+        <h2 class="text-gray-900 mb-4">Simple, transparent monthly pricing.</h2>
+        <p class="text-lg text-gray-500">Billed monthly via Lemon Squeezy. Cancel any time from your customer portal.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
-        {plans.map((plan, index) => (
-          <div
-            class={`relative rounded-2xl transition-all duration-300 animate-on-scroll animation-delay-${(index + 1) * 100} ${
-              plan.highlight
-                ? 'bg-primary text-white shadow-soft-xl scale-105 ring-4 ring-accent/30'
-                : 'bg-white shadow-card hover:shadow-card-hover'
-            }`}
-          >
+      <div class="grid md:grid-cols-3 gap-6 items-start max-w-5xl mx-auto">
+        {plans.map((plan, i) => (
+          <div class={`relative rounded-2xl overflow-hidden border transition-all duration-300 animate-on-scroll ${plan.highlight ? 'shadow-2xl scale-[1.03]' : 'bg-white shadow-sm hover:shadow-lg hover:-translate-y-1'}`}
+            style={plan.highlight ? `background:white;border-color:${plan.color};box-shadow:0 20px 60px ${plan.color}22;` : 'border-color:#e5e7eb;'}>
+
+            {/* Top colour stripe */}
+            <div class="h-1.5 w-full" style={`background:linear-gradient(90deg,${plan.color},${plan.color}99);`}></div>
+
             {plan.badge && (
-              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span class="bg-accent text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow">
-                  {plan.badge}
-                </span>
+              <div class="absolute top-4 right-4">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white" style={`background:${plan.color};`}>{plan.badge}</span>
               </div>
             )}
 
-            <div class="p-8">
-              <!-- Plan header -->
-              <h3 class={`text-2xl font-bold mb-1 ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
-                {plan.name}
-              </h3>
-              <p class={`text-sm mb-6 ${plan.highlight ? 'text-white/70' : 'text-gray-600'}`}>
-                {plan.description}
-              </p>
+            <div class="p-7">
+              <div class="mb-5">
+                <p class="text-xs font-bold uppercase tracking-widest mb-0.5" style={`color:${plan.color};`}>{plan.name}</p>
+                <h3 class="text-xl font-black text-gray-900">{plan.subtitle}</h3>
+                <p class="text-sm text-gray-500 mt-1 leading-snug">{plan.description}</p>
+              </div>
 
               <!-- Price -->
               <div class="flex items-end gap-1 mb-2">
-                <span class={`text-5xl font-bold ${plan.highlight ? 'text-white' : 'text-gray-900'}`}>
-                  {plan.price}
-                </span>
-                <span class={`text-lg pb-1 ${plan.highlight ? 'text-white/60' : 'text-gray-500'}`}>
-                  {plan.period}
-                </span>
+                <span class="text-5xl font-black text-gray-900">{plan.price}</span>
+                <span class="text-base text-gray-400 pb-1.5">{plan.period}</span>
               </div>
-
-              <!-- Server count badge -->
-              <div class={`inline-flex items-center gap-1.5 text-sm font-medium px-3 py-1 rounded-full mb-8 ${
-                plan.highlight ? 'bg-white/10 text-white' : 'bg-accent/10 text-accent'
-              }`}>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
+              <div class="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full mb-6 border" style={`color:${plan.color};background:${plan.bg};border-color:${plan.color}30;`}>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
                 {plan.servers}
               </div>
 
               <!-- CTA -->
-              <a
-                href={plan.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 mb-8 ${
-                  plan.highlight
-                    ? 'bg-accent text-white hover:bg-accent/90 shadow-md hover:shadow-lg'
-                    : 'bg-primary text-white hover:bg-primary/90 shadow-sm hover:shadow-md'
-                }`}
-              >
+              <a href={plan.href} target="_blank" rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl font-bold text-sm text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] mb-6"
+                style={`background:linear-gradient(135deg,${plan.color},${plan.color}cc);box-shadow:0 4px 14px ${plan.color}30;`}>
                 {plan.cta}
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
 
-              <!-- Divider -->
-              <div class={`border-t mb-6 ${plan.highlight ? 'border-white/10' : 'border-primary/10'}`}></div>
-
-              <!-- Features list -->
-              <ul class="space-y-3">
-                {plan.features.map((f) => (
-                  <li class="flex items-start gap-3">
-                    <svg
-                      class={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.highlight ? 'text-accent' : 'text-accent'}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class={`text-sm ${plan.highlight ? 'text-white/80' : 'text-gray-600'}`}>{f}</span>
-                  </li>
-                ))}
-              </ul>
+              <div class="border-t border-gray-100 pt-5">
+                <ul class="space-y-2.5">
+                  {plan.features.map(feat => (
+                    <li class="flex items-start gap-2.5">
+                      <div class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={`background:${plan.bg};`}>
+                        <svg class="w-2.5 h-2.5" style={`color:${plan.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                      </div>
+                      <span class="text-sm text-gray-600">{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Payment note -->
-      <p class="text-center text-sm text-gray-500 mt-10">
+      <p class="text-center text-sm text-gray-400 mt-10">
         Secure monthly payments powered by
-        <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">
-          Lemon Squeezy
-        </a>
-        &nbsp;— all major cards accepted. Cancel any time from your customer portal.
+        <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline font-medium">Lemon Squeezy</a>
+        — all major cards accepted. Cancel any time.
       </p>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ── FAQ ── -->
   <section class="section-padding bg-white">
     <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-14 animate-on-scroll">
         <span class="badge-accent mb-4">FAQ</span>
-        <h2 class="mb-6">
-          Common
-          <span class="text-accent">questions</span>
-        </h2>
+        <h2 class="text-gray-900 mb-4">Common questions.</h2>
+        <p class="text-lg text-gray-500">Everything you need to know before getting started.</p>
       </div>
 
-      <div class="max-w-3xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <details
-            class={`group bg-background rounded-xl overflow-hidden animate-on-scroll animation-delay-${(index + 1) * 100}`}
-          >
-            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none font-semibold text-gray-900 select-none">
+      <div class="max-w-3xl mx-auto space-y-3">
+        {faqs.map((faq, i) => (
+          <details class="group bg-[#FCFBFA] rounded-2xl border border-gray-100 overflow-hidden animate-on-scroll transition-all hover:border-gray-200">
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-gray-900 select-none">
               {faq.q}
-              <svg
-                class="w-5 h-5 flex-shrink-0 text-accent transition-transform duration-300 group-open:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              <svg class="w-5 h-5 flex-shrink-0 text-gray-400 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </summary>
-            <p class="px-6 pb-6 text-gray-600 leading-relaxed">{faq.a}</p>
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-4">{faq.a}</p>
           </details>
         ))}
       </div>
@@ -411,4 +319,5 @@ const faqs = [
   </section>
 
   <FinalCTA />
+
 </BaseLayout>
