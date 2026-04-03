@@ -71,7 +71,246 @@ const tiles = [
 
     <!-- THE WINDOW -->
     <div class="mx-auto mb-14 td-reveal td-delay-2" id="td-mockup-wrap">
-      <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white" style="box-shadow:0 24px 80px rgba(0,0,0,0.11),0 4px 20px rgba(0,0,0,0.05);">
+
+      <!-- ══ PHONE MOCKUP — mobile only ══ -->
+      <div class="sm:hidden mx-auto" style="max-width:280px;" id="td-phone-wrap">
+        <div class="relative rounded-[2.5rem] overflow-hidden" style="border:8px solid #1f2937;box-shadow:0 20px 60px rgba(0,0,0,0.35);">
+          <!-- Status bar -->
+          <div class="bg-white flex items-center justify-between px-5 py-1.5 border-b border-gray-50">
+            <span class="text-gray-900 font-semibold" style="font-size:10px;">9:41</span>
+            <div class="flex items-center gap-1.5">
+              <div class="flex items-end gap-0.5">
+                <div class="w-0.5 rounded-sm bg-gray-700" style="height:4px;"></div>
+                <div class="w-0.5 rounded-sm bg-gray-700" style="height:6px;"></div>
+                <div class="w-0.5 rounded-sm bg-gray-700" style="height:8px;"></div>
+                <div class="w-0.5 rounded-sm bg-gray-700" style="height:10px;"></div>
+              </div>
+              <div class="flex items-center border border-gray-700 rounded-sm px-0.5" style="height:10px;width:18px;gap:1px;">
+                <div class="bg-gray-700 rounded-sm flex-1 h-full"></div>
+              </div>
+            </div>
+          </div>
+          <!-- App header -->
+          <div class="bg-white px-4 py-2.5 flex items-center justify-between" style="border-bottom:1px solid #f3f4f6;">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#6366f1,#06b6d4);">
+                <span class="text-white font-black" style="font-size:11px;">T</span>
+              </div>
+              <span class="text-gray-900 font-bold text-sm">TrueDesk</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+              <span class="text-gray-400 font-medium" id="mobile-url-bar" style="font-size:9px;">dashboard</span>
+            </div>
+          </div>
+          <!-- Views -->
+          <div class="relative bg-gray-50" style="height:440px;overflow:hidden;">
+
+            <!-- Dashboard -->
+            <div class="mobile-td-view absolute inset-0 overflow-y-auto p-3" data-view="dashboard">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <p class="text-gray-400" style="font-size:9px;">Good morning, James</p>
+                  <p class="text-sm font-bold text-gray-900">Wednesday, 2 April</p>
+                </div>
+                <button class="text-white px-2.5 py-1.5 rounded-lg font-semibold" style="background:#6366f1;font-size:9px;">+ New Sale</button>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mb-3">
+                {[
+                  { label:"Today's Sales", value:'£2,840', change:'+18%',        color:'#10b981', bg:'#f0fdf4', border:'#bbf7d0' },
+                  { label:'Open Repairs',  value:'12',     change:'3 due today', color:'#f97316', bg:'#fff7ed', border:'#fed7aa' },
+                  { label:'Staff In',      value:'8/10',   change:'2 on leave',  color:'#6366f1', bg:'#eef2ff', border:'#c7d2fe' },
+                  { label:'Payroll Due',   value:'£9,200', change:'This Friday', color:'#8b5cf6', bg:'#f5f3ff', border:'#ddd6fe' },
+                ].map(s => (
+                  <div class="rounded-xl p-2.5 border" style={`background:${s.bg};border-color:${s.border};`}>
+                    <p class="text-gray-500 mb-1" style="font-size:9px;">{s.label}</p>
+                    <p class="text-base font-black text-gray-900">{s.value}</p>
+                    <p class="font-semibold mt-0.5" style={`color:${s.color};font-size:9px;`}>{s.change}</p>
+                  </div>
+                ))}
+              </div>
+              <div class="bg-white rounded-xl border border-gray-100 p-3">
+                <p class="text-xs font-bold text-gray-800 mb-2">Recent Activity</p>
+                {[
+                  { text:'Sale — Gold Ring 9ct',    time:'2m',  color:'#10b981' },
+                  { text:'Repair #1042 — Ready',    time:'14m', color:'#f97316' },
+                  { text:'Payslip — H. De Silva',   time:'1h',  color:'#8b5cf6' },
+                  { text:'Low stock — Silver Chain', time:'2h', color:'#ec4899' },
+                ].map(a => (
+                  <div class="flex items-center gap-2 py-1.5 border-b border-gray-50 last:border-0">
+                    <div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style={`background:${a.color}`}></div>
+                    <p class="text-gray-600 flex-1" style="font-size:10px;">{a.text}</p>
+                    <p class="text-gray-400 flex-shrink-0" style="font-size:9px;">{a.time}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- POS -->
+            <div class="mobile-td-view absolute inset-0 flex flex-col" data-view="pos" style="opacity:0;pointer-events:none;">
+              <div class="px-3 py-2.5 bg-white" style="border-bottom:1px solid #f3f4f6;">
+                <p class="text-sm font-bold text-gray-900">Point of Sale</p>
+              </div>
+              <div class="flex-1 overflow-y-auto p-2.5">
+                <div class="grid grid-cols-2 gap-2">
+                  {[
+                    { name:'Gold Ring 9ct',     price:'£450'   },
+                    { name:'Diamond Cluster',   price:'£1,200' },
+                    { name:'Silver Bracelet',   price:'£85'    },
+                    { name:'Watch Battery',     price:'£15'    },
+                    { name:'Strap Replacement', price:'£45'    },
+                    { name:'Chain Repair',      price:'£35'    },
+                  ].map(p => (
+                    <div class="bg-white rounded-xl p-2.5 border border-gray-100 cursor-pointer active:scale-95 transition-all">
+                      <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-2" style="background:#f0fdf4;border:1px solid #bbf7d0;">
+                        <svg class="w-4 h-4" style="color:#10b981;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                      </div>
+                      <p class="text-gray-800 font-semibold leading-snug" style="font-size:10px;">{p.name}</p>
+                      <p class="text-gray-900 font-bold mt-0.5" style="font-size:11px;">{p.price}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div class="bg-white p-3 flex items-center justify-between" style="border-top:1px solid #f3f4f6;">
+                <div>
+                  <p class="text-gray-400" style="font-size:9px;">0 items in cart</p>
+                  <p class="text-base font-black text-gray-900">£0.00</p>
+                </div>
+                <button class="text-white font-bold px-5 py-2 rounded-xl" style="background:#10b981;font-size:13px;">Charge</button>
+              </div>
+            </div>
+
+            <!-- Repairs -->
+            <div class="mobile-td-view absolute inset-0 flex flex-col" data-view="repairs" style="opacity:0;pointer-events:none;">
+              <div class="px-3 py-2.5 bg-white flex items-center justify-between" style="border-bottom:1px solid #f3f4f6;">
+                <p class="text-sm font-bold text-gray-900">Repair Jobs</p>
+                <button class="text-white px-2.5 py-1.5 rounded-lg font-semibold" style="background:#f97316;font-size:9px;">+ New Job</button>
+              </div>
+              <div class="flex-1 overflow-y-auto p-2.5 space-y-2">
+                {[
+                  { id:'#1041', name:'Hasitha De Silva', item:'Gold Ring — Resize',      status:'In Progress',    color:'#6366f1', bg:'#eef2ff', avatar:'HD' },
+                  { id:'#1042', name:'Walk-in Customer', item:'iPhone Screen Replace',   status:'Ready',          color:'#10b981', bg:'#f0fdf4', avatar:'WC' },
+                  { id:'#1043', name:'Sarah Mitchell',   item:'Gold Chain — Repair',     status:'Awaiting Parts', color:'#ec4899', bg:'#fdf2f8', avatar:'SM' },
+                  { id:'#1044', name:'Tom Brown',        item:'Omega Watch — Service',   status:'In Progress',    color:'#6366f1', bg:'#eef2ff', avatar:'TB' },
+                  { id:'#1045', name:'Emma Jones',       item:'Diamond Ring — Clean',    status:'Completed',      color:'#9ca3af', bg:'#f9fafb', avatar:'EJ' },
+                ].map(job => (
+                  <div class="bg-white rounded-xl px-3 py-2.5 border border-gray-100 flex items-center gap-2.5 cursor-pointer active:scale-[0.98] transition-all">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold" style={`background:${job.color};font-size:9px;`}>{job.avatar}</div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-semibold text-gray-800" style="font-size:10px;">{job.name}</p>
+                      <p class="text-gray-400 truncate" style="font-size:9px;">{job.item}</p>
+                    </div>
+                    <span class="font-semibold px-2 py-0.5 rounded-full flex-shrink-0" style={`color:${job.color};background:${job.bg};font-size:8px;`}>{job.status}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- HR -->
+            <div class="mobile-td-view absolute inset-0 flex flex-col" data-view="hr" style="opacity:0;pointer-events:none;">
+              <div class="px-3 py-2.5 bg-white flex items-center justify-between" style="border-bottom:1px solid #f3f4f6;">
+                <p class="text-sm font-bold text-gray-900">HR &amp; Payroll</p>
+                <button class="text-white px-2.5 py-1.5 rounded-lg font-semibold" style="background:#8b5cf6;font-size:9px;">Run Payroll</button>
+              </div>
+              <div class="grid grid-cols-3 gap-2 p-2.5 pb-0">
+                {[
+                  { label:'Total Staff', value:'10',   color:'#8b5cf6', bg:'#f5f3ff', border:'#ddd6fe' },
+                  { label:'On Leave',   value:'2',     color:'#f97316', bg:'#fff7ed', border:'#fed7aa' },
+                  { label:'Payroll',    value:'£9.2k', color:'#10b981', bg:'#f0fdf4', border:'#bbf7d0' },
+                ].map(s => (
+                  <div class="rounded-xl p-2 border text-center" style={`background:${s.bg};border-color:${s.border};`}>
+                    <p class="font-black" style={`color:${s.color};font-size:15px;`}>{s.value}</p>
+                    <p class="text-gray-500" style="font-size:8px;">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <div class="flex-1 overflow-y-auto p-2.5 pt-2 space-y-1.5">
+                {[
+                  { name:'Hasitha De Silva', role:'Manager',           salary:'£3,200/mo', init:'HD', bg:'#8b5cf6' },
+                  { name:'James Whitmore',   role:'Senior Jeweller',   salary:'£2,400/mo', init:'JW', bg:'#6366f1' },
+                  { name:'Sophie Brennan',   role:'Sales Associate',   salary:'£1,800/mo', init:'SB', bg:'#ec4899' },
+                  { name:'Tom Wright',       role:'Repair Technician', salary:'£2,100/mo', init:'TW', bg:'#f97316' },
+                  { name:'Emma Kowalski',    role:'Administrator',     salary:'£1,700/mo', init:'EK', bg:'#3b82f6' },
+                ].map(e => (
+                  <div class="bg-white rounded-xl px-3 py-2 border border-gray-100 flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold" style={`background:${e.bg};font-size:9px;`}>{e.init}</div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-semibold text-gray-800" style="font-size:10px;">{e.name}</p>
+                      <p class="text-gray-400" style="font-size:9px;">{e.role}</p>
+                    </div>
+                    <p class="font-semibold text-gray-600 flex-shrink-0" style="font-size:9px;">{e.salary}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Analytics -->
+            <div class="mobile-td-view absolute inset-0 overflow-y-auto p-3" data-view="analytics" style="opacity:0;pointer-events:none;">
+              <div class="flex items-center justify-between mb-2">
+                <p class="text-sm font-bold text-gray-900">Analytics</p>
+                <div class="flex gap-1">
+                  {[['7D',false],['30D',true],['12M',false]].map(([r,active]) => (
+                    <span class="px-2 py-1 rounded-lg font-semibold" style={active?'background:#f59e0b;color:white;font-size:9px':'background:#f3f4f6;color:#6b7280;font-size:9px'}>{r}</span>
+                  ))}
+                </div>
+              </div>
+              <div class="rounded-xl p-3 border border-amber-100 mb-3" style="background:#fffbeb;">
+                <p class="font-medium mb-1" style="color:#92400e;font-size:9px;">Total Revenue — 30 Days</p>
+                <p class="text-2xl font-black text-gray-900">£18,340</p>
+                <p class="font-semibold text-emerald-600 mb-2" style="font-size:10px;">+23% vs last period</p>
+                <div class="flex items-end gap-0.5" style="height:48px;">
+                  {[38,45,52,41,63,55,78,66,81,74,89,83,91,100].map(h => (
+                    <div class="flex-1 rounded-t-sm" style={`height:${h}%;background:linear-gradient(to top,#f59e0b,#fcd34d);`}></div>
+                  ))}
+                </div>
+              </div>
+              <div class="bg-white rounded-xl border border-gray-100 p-3">
+                <p class="text-xs font-bold text-gray-800 mb-2">Top Products</p>
+                {[
+                  { name:'Gold Ring 9ct',   revenue:'£4,200', pct:73 },
+                  { name:'Diamond Cluster', revenue:'£3,600', pct:62 },
+                  { name:'Silver Bracelet', revenue:'£2,550', pct:44 },
+                  { name:'Chain Repair',    revenue:'£1,890', pct:32 },
+                ].map(p => (
+                  <div class="mb-2 last:mb-0">
+                    <div class="flex justify-between mb-0.5">
+                      <p class="text-gray-700 font-medium" style="font-size:9px;">{p.name}</p>
+                      <p class="text-gray-900 font-bold" style="font-size:9px;">{p.revenue}</p>
+                    </div>
+                    <div class="bg-gray-100 rounded-full" style="height:4px;">
+                      <div class="rounded-full" style={`width:${p.pct}%;height:4px;background:linear-gradient(to right,#f59e0b,#fcd34d);`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+          <!-- Bottom tab nav -->
+          <div class="bg-white flex items-center justify-around py-2 px-2" style="border-top:1px solid #f3f4f6;">
+            {[
+              { view:'dashboard', color:'#6366f1', label:'Home',    icon:'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+              { view:'pos',       color:'#10b981', label:'POS',     icon:'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' },
+              { view:'repairs',   color:'#f97316', label:'Repairs', icon:'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+              { view:'hr',        color:'#8b5cf6', label:'HR',      icon:'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
+              { view:'analytics', color:'#f59e0b', label:'Reports', icon:'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z' },
+            ].map((tab, i) => (
+              <button class="mobile-tab-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all"
+                data-view={tab.view} data-color={tab.color}
+                style={i===0 ? `background:${tab.color}18;` : ''}>
+                <svg class="w-4 h-4" style={i===0 ? `color:${tab.color}` : 'color:#9ca3af'} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={tab.icon}/>
+                </svg>
+                <span style={`font-size:8px;font-weight:600;color:${i===0 ? tab.color : '#9ca3af'}`}>{tab.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      <!-- ── end phone mockup ── -->
+
+      <!-- ══ BROWSER MOCKUP — sm+ only ══ -->
+      <div class="hidden sm:block rounded-2xl overflow-hidden border border-gray-200 bg-white" style="box-shadow:0 24px 80px rgba(0,0,0,0.11),0 4px 20px rgba(0,0,0,0.05);">
 
         <!-- Browser bar -->
         <div class="bg-gray-50 px-5 py-3.5 flex items-center gap-3 border-b border-gray-100">
@@ -464,6 +703,26 @@ const tiles = [
 
     const urlBar = document.getElementById('td-url-bar');
     if (urlBar) urlBar.textContent = urlMap[viewId] || 'app.truedesk.co.uk';
+
+    // ── Mobile views ──
+    document.querySelectorAll<HTMLElement>('.mobile-td-view').forEach(v => {
+      v.style.opacity = '0'; v.style.pointerEvents = 'none';
+    });
+    const mEl = document.querySelector<HTMLElement>(`.mobile-td-view[data-view="${viewId}"]`);
+    if (mEl) { mEl.style.opacity = '1'; mEl.style.pointerEvents = ''; }
+
+    document.querySelectorAll<HTMLElement>('.mobile-tab-btn').forEach(btn => {
+      const active = btn.dataset.view === viewId;
+      const c = btn.dataset.color || '#6366f1';
+      const ico = btn.querySelector<SVGElement>('svg');
+      const lbl = btn.querySelector<HTMLElement>('span');
+      btn.style.background = active ? `${c}18` : '';
+      if (ico) ico.style.color = active ? c : '#9ca3af';
+      if (lbl) { lbl.style.color = active ? c : '#9ca3af'; lbl.style.fontWeight = active ? '700' : '600'; }
+    });
+
+    const mUrlBar = document.getElementById('mobile-url-bar');
+    if (mUrlBar) mUrlBar.textContent = viewId;
   }
 
   // ── Tile clicks ──
@@ -509,6 +768,19 @@ const tiles = [
 
   const wrap = document.getElementById('td-mockup-wrap');
   if (wrap) { wrap.addEventListener('mouseenter', stopAuto); wrap.addEventListener('mouseleave', startAuto); }
+
+  // ── Mobile tab nav clicks ──
+  document.querySelectorAll<HTMLElement>('.mobile-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id    = btn.dataset.view!;
+      const color = btn.dataset.color || '#6366f1';
+      const def   = cycleList.find(t => t.id === id);
+      const sIdx  = def ? def.sIdx : 0;
+      if (def) cycleIdx = cycleList.indexOf(def);
+      switchView(id, sIdx, color);
+      stopAuto();
+    });
+  });
 
   // ── POS interactions ──
   interface CartItem { name: string; price: number; qty: number }
