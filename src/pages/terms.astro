@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Terms and Conditions"
+  description="Terms and Conditions for Idearigs managed infrastructure and technology services."
+>
+  <section class="pt-36 pb-20 bg-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto">
+
+        <!-- Header -->
+        <div class="mb-12">
+          <span class="inline-flex items-center gap-1.5 bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-5">Legal</span>
+          <h1 class="text-4xl font-black text-gray-900 mb-3">Terms and Conditions</h1>
+          <p class="text-sm text-gray-400">Last Updated: April 6, 2026</p>
+        </div>
+
+        <!-- Intro -->
+        <p class="text-gray-600 leading-relaxed mb-10">
+          Welcome to Idearigs. These Terms and Conditions ("Terms") govern your use of the server management and maintenance services provided by Idearigs ("we," "us," or "our"). By subscribing to our services, you agree to these Terms.
+        </p>
+
+        <!-- Sections -->
+        <div class="space-y-10">
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">1. The Service</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Idearigs provides managed infrastructure support, including but not limited to uptime monitoring, security patching, and automated backups. We provide these services on a best-effort basis to ensure the stability of your systems.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">2. Payments and Subscriptions</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Our payments are processed by <strong class="text-gray-800">Lemon Squeezy</strong>, who acts as the Merchant of Record.
+            </p>
+            <ul class="space-y-2 pl-5 list-disc text-gray-600">
+              <li>Subscriptions are billed monthly in advance.</li>
+              <li>You may cancel your subscription at any time through the Lemon Squeezy customer portal.</li>
+              <li>Prices are inclusive of UK VAT where applicable.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">3. Limitation of Liability</h2>
+            <p class="text-gray-600 leading-relaxed">
+              While we strive for 100% uptime, Idearigs is not liable for any lost profits, data loss, or business interruptions caused by server downtime or third-party hosting failures. Our total liability is limited to the amount paid for the service in the month the issue occurred.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">4. Client Responsibilities</h2>
+            <p class="text-gray-600 leading-relaxed">
+              The client is responsible for providing necessary access credentials and maintaining ownership of the underlying hardware or VPS hosting accounts.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">5. Acceptable Use</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              By using our services you agree not to use our managed infrastructure for any unlawful, harmful, or abusive purposes, including but not limited to:
+            </p>
+            <ul class="space-y-2 pl-5 list-disc text-gray-600">
+              <li>Hosting or distributing malware, phishing content, or spam.</li>
+              <li>Infringing intellectual property rights.</li>
+              <li>Engaging in activities that violate applicable UK or international law.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">6. Intellectual Property</h2>
+            <p class="text-gray-600 leading-relaxed">
+              All tools, scripts, dashboards, and documentation developed by Idearigs remain the intellectual property of Idearigs unless otherwise agreed in writing. You are granted a non-exclusive, non-transferable licence to use them solely for the purpose of receiving our services.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">7. Confidentiality</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Both parties agree to keep confidential any sensitive information shared during the engagement, including server credentials, business data, and proprietary systems. This obligation survives termination of the agreement.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">8. Termination</h2>
+            <p class="text-gray-600 leading-relaxed">
+              We reserve the right to terminate service immediately and without refund for non-payment, breach of these Terms, or if the client's infrastructure is used for illegal activities. You may terminate at any time by cancelling your subscription through the customer portal; no further charges will be made after the current billing period ends.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">9. Changes to These Terms</h2>
+            <p class="text-gray-600 leading-relaxed">
+              We may update these Terms from time to time. We will notify you of significant changes via email. Continued use of our services after changes take effect constitutes your acceptance of the revised Terms.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">10. Governing Law</h2>
+            <p class="text-gray-600 leading-relaxed">
+              These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">11. Contact</h2>
+            <p class="text-gray-600 leading-relaxed">
+              For questions about these Terms, please contact us at{' '}
+              <a href="mailto:hello@idearigs.com" class="text-accent font-semibold hover:underline">hello@idearigs.com</a>.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="mt-14 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p class="text-sm text-gray-400">© {new Date().getFullYear()} Idearigs. All rights reserved.</p>
+          <a href="/privacy" class="text-sm text-accent font-semibold hover:underline">Privacy Policy →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
