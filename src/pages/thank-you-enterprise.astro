@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Thank You — Enterprise Infrastructure Tier Active"
+  description="Your Idearigs Enterprise Infrastructure Tier subscription is confirmed. We are starting the process now."
+>
+  <section class="min-h-screen bg-[#FCFBFA] flex flex-col items-center justify-center pt-32 pb-20 px-4">
+
+    <!-- Checkmark -->
+    <div class="relative mb-8">
+      <div class="w-24 h-24 rounded-full flex items-center justify-center" style="background:#f5f3ff;border:2px solid #ddd6fe;">
+        <svg class="w-11 h-11" style="color:#8b5cf6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <div class="absolute inset-0 rounded-full animate-ping opacity-20" style="background:#8b5cf6;animation-duration:2s;"></div>
+    </div>
+
+    <!-- Heading -->
+    <div class="text-center max-w-xl mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color:#8b5cf6;">Enterprise Infrastructure Tier — £385/mo</p>
+      <h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3">We're starting the process now.</h1>
+      <p class="text-gray-500 text-base leading-relaxed">
+        Your subscription is confirmed and our team is already on it.
+        Expect to hear from us <strong class="text-gray-700">within a few hours</strong>.
+      </p>
+    </div>
+
+    <!-- Steps card -->
+    <div class="w-full max-w-lg bg-white rounded-2xl border overflow-hidden" style="border-color:#ddd6fe;box-shadow:0 8px 32px rgba(139,92,246,0.08);">
+      <div class="px-6 py-4 border-b flex items-center gap-3" style="background:#f5f3ff;border-color:#ddd6fe;">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#8b5cf6;">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <p class="font-bold text-gray-900 text-sm">What happens next</p>
+      </div>
+      <ul class="divide-y divide-gray-50">
+        {[
+          { text: 'Payment confirmed — your Enterprise Infrastructure Tier subscription is now active.', done: true },
+          { text: 'A senior Idearigs engineer will contact you within a few hours to begin priority onboarding.', done: false },
+          { text: 'We will deploy your Standardized High-Availability Configuration and connect real-time telemetry.', done: false },
+          { text: 'Multi-region monitoring, IDS, load balancing, and your 4-hour Priority SLA go live within 24 hours.', done: false },
+          { text: 'Your first Weekly Automated Security Audit Report will be delivered within 7 days.', done: false },
+        ].map((step, i) => (
+          <li class="flex items-start gap-4 px-6 py-4">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-black text-white" style={`background:${step.done ? '#8b5cf6' : '#d1d5db'};`}>
+              {i + 1}
+            </div>
+            <p class={`text-sm leading-relaxed ${step.done ? 'text-gray-900 font-semibold' : 'text-gray-500'}`}>{step.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-8 text-sm text-gray-400 text-center max-w-sm">
+      Questions? Email us at{' '}
+      <a href="mailto:hello@idearigs.com" class="font-semibold hover:underline" style="color:#8b5cf6;">hello@idearigs.com</a>
+    </p>
+    <a href="/" class="mt-6 inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Back to homepage
+    </a>
+
+  </section>
+</BaseLayout>

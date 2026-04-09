@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Thank You — Standard Plan Active"
+  description="Your Idearigs Standard managed server subscription is confirmed. We are starting the process now."
+>
+  <section class="min-h-screen bg-[#FCFBFA] flex flex-col items-center justify-center pt-32 pb-20 px-4">
+
+    <!-- Checkmark -->
+    <div class="relative mb-8">
+      <div class="w-24 h-24 rounded-full flex items-center justify-center" style="background:#eef2ff;border:2px solid #c7d2fe;">
+        <svg class="w-11 h-11" style="color:#6366f1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <div class="absolute inset-0 rounded-full animate-ping opacity-20" style="background:#6366f1;animation-duration:2s;"></div>
+    </div>
+
+    <!-- Heading -->
+    <div class="text-center max-w-xl mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest mb-2" style="color:#6366f1;">Standard Plan — £110/mo</p>
+      <h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3">We're starting the process now.</h1>
+      <p class="text-gray-500 text-base leading-relaxed">
+        Your subscription is confirmed and our team is already on it.
+        Expect to hear from us <strong class="text-gray-700">within 1 business day</strong>.
+      </p>
+    </div>
+
+    <!-- Steps card -->
+    <div class="w-full max-w-lg bg-white rounded-2xl border overflow-hidden" style="border-color:#c7d2fe;box-shadow:0 8px 32px rgba(99,102,241,0.08);">
+      <div class="px-6 py-4 border-b flex items-center gap-3" style="background:#eef2ff;border-color:#c7d2fe;">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#6366f1;">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <p class="font-bold text-gray-900 text-sm">What happens next</p>
+      </div>
+      <ul class="divide-y divide-gray-50">
+        {[
+          { text: 'Payment confirmed — your Standard subscription is now active.', done: true },
+          { text: 'An Idearigs engineer will contact you within 1 business day to gather your server credentials.', done: false },
+          { text: 'We will set up SSH key authentication and begin onboarding your servers.', done: false },
+          { text: 'Your 24/7 monitoring dashboard and daily backups will be live within 24 hours of onboarding.', done: false },
+          { text: 'You will receive your first automated maintenance report within 30 days.', done: false },
+        ].map((step, i) => (
+          <li class="flex items-start gap-4 px-6 py-4">
+            <div class={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-black text-white`} style={`background:${step.done ? '#6366f1' : '#d1d5db'};`}>
+              {i + 1}
+            </div>
+            <p class={`text-sm leading-relaxed ${step.done ? 'text-gray-900 font-semibold' : 'text-gray-500'}`}>{step.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-8 text-sm text-gray-400 text-center max-w-sm">
+      Questions? Email us at{' '}
+      <a href="mailto:hello@idearigs.com" class="font-semibold hover:underline" style="color:#6366f1;">hello@idearigs.com</a>
+    </p>
+    <a href="/" class="mt-6 inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Back to homepage
+    </a>
+
+  </section>
+</BaseLayout>
