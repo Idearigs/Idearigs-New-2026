@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Setting Up Your POS System — Idearigs"
+  description="We are finalizing your TrueDesk POS system and will send your login details by email shortly."
+>
+  <section class="min-h-screen bg-[#FCFBFA] flex flex-col items-center justify-center pt-32 pb-20 px-4">
+
+    <!-- Animated icon -->
+    <div class="relative mb-8">
+      <div class="w-24 h-24 rounded-full flex items-center justify-center" style="background:#f0fdf4;border:2px solid #bbf7d0;">
+        <svg class="w-11 h-11" style="color:#046645" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <div class="absolute inset-0 rounded-full animate-ping opacity-20" style="background:#046645;animation-duration:2.5s;"></div>
+    </div>
+
+    <!-- Heading -->
+    <div class="text-center max-w-lg mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5" style="background:#f0fdf4;color:#046645;border:1px solid #bbf7d0;">
+        <span class="w-2 h-2 rounded-full animate-pulse" style="background:#10b981;"></span>
+        Order Received
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">
+        We are finalizing your<br/>
+        <span style="color:#046645;">POS system.</span>
+      </h1>
+      <p class="text-gray-500 text-base leading-relaxed">
+        We will send you the login details to your email in a bit.<br/>
+        This usually takes <strong class="text-gray-700">less than 24 hours</strong>.
+      </p>
+    </div>
+
+    <!-- Info card -->
+    <div class="w-full max-w-md bg-white rounded-2xl border overflow-hidden" style="border-color:#bbf7d0;box-shadow:0 8px 32px rgba(4,102,69,0.08);">
+
+      <!-- Card header -->
+      <div class="px-6 py-4 border-b flex items-center gap-3" style="background:#f0fdf4;border-color:#bbf7d0;">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#046645,#059669);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <p class="font-bold text-gray-900 text-sm">What to expect</p>
+      </div>
+
+      <!-- Steps -->
+      <ul class="divide-y divide-gray-50">
+        {[
+          { text: 'Your order has been confirmed and is being processed.', done: true },
+          { text: 'Our team will configure your TrueDesk POS environment.', done: false },
+          { text: 'You will receive a welcome email with your login credentials.', done: false },
+          { text: 'A setup guide will be included to get you up and running fast.', done: false },
+        ].map((step, i) => (
+          <li class="flex items-start gap-4 px-6 py-4">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-black text-white" style={`background:${step.done ? '#046645' : '#d1d5db'};`}>
+              {i + 1}
+            </div>
+            <p class={`text-sm leading-relaxed ${step.done ? 'text-gray-900 font-semibold' : 'text-gray-500'}`}>{step.text}</p>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Email note -->
+      <div class="px-6 py-4 border-t" style="border-color:#bbf7d0;background:#f0fdf4;">
+        <p class="text-xs text-gray-500 leading-relaxed">
+          Can't find the email? Check your spam folder or contact us at{' '}
+          <a href="mailto:hello@idearigs.com" class="font-semibold hover:underline" style="color:#046645;">hello@idearigs.com</a>
+        </p>
+      </div>
+    </div>
+
+    <a href="/" class="mt-8 inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Back to homepage
+    </a>
+
+  </section>
+</BaseLayout>
